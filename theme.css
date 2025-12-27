@@ -1,27 +1,1096 @@
-/* --- CONFIGURATION DU MODE CLAIR ☀️ --- */
+/* THÈME SÉRÉNITÉ v2.0 POUR OBSIDIAN
+   --------------------------------------------------
+   Design: Moderne, Minimaliste, Productivité-First
+   Améliorations: Focus Mode, Callouts, Tables, Checkboxes, Canvas
+   
+   INSTRUCTIONS:
+   Créer: .obsidian/themes/Serenite/theme.css
+   Ou: .obsidian/snippets/serenite.css (activer dans Apparence)
+*/
+
+/* ==========================================================================
+   1. VARIABLES DE BASE & TYPOGRAPHIE
+   ========================================================================== */
+body {
+    --font-text-theme: "Inter", "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-monospace-theme: "JetBrains Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+    
+    --font-text-size: 16px; 
+    --font-body-line-height: 1.65; 
+    --font-weight-bold: 600;
+    --line-width: 760px;
+
+    --radius-s: 4px;   
+    --radius-m: 8px;
+    --radius-l: 12px;
+    --radius-xl: 16px;
+    
+    --size-4-1: 4px;
+    --size-4-2: 8px;
+    --size-4-3: 12px;
+    --size-4-4: 16px;
+    --size-4-5: 24px;
+    --size-4-6: 32px;
+    
+    --anim-duration-fast: 0.15s;
+    --anim-duration-normal: 0.25s;
+    --anim-motion: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   2. PALETTE - MODE CLAIR (Optimisée contraste WCAG)
+   ========================================================================== */
 .theme-light {
-    /* Tes variables perso */
-    --nav-bar-color: #ff9900; 
+    --background-primary: #FAFAF8;
+    --background-primary-alt: #F5F4F0;
+    --background-secondary: #EFEEE8;
+    --background-secondary-alt: #E8E6DE;
+    --background-modifier-border: #D9D6CC;
+    --background-modifier-hover: rgba(125, 156, 139, 0.08);
+    --background-modifier-active: rgba(125, 156, 139, 0.15);
+    --background-modifier-success: #E8F5E9;
+    --background-modifier-error: #FFEBEE;
+    --background-modifier-warning: #FFF8E1;
+
+    --text-normal: #2D3035;
+    --text-muted: #5A5E66;
+    --text-faint: #8A8E96;
+    --text-on-accent: #FFFFFF;
     
-    /* Surcharge des variables Obsidian */
-    --background-primary: #f0f0f0;
-    --text-normal: #333333;
-    --color-accent: #d90429;
+    --interactive-accent: #6B9080;
+    --interactive-accent-hover: #5A7A6C;
+    --text-accent: #4A6D5C;
+    --text-accent-hover: #3D5A4C;
+    
+    --text-selection: rgba(107, 144, 128, 0.25);
+    --text-highlight-bg: rgba(251, 192, 45, 0.35);
+    
+    --h1-color: #1A2B25;
+    --h2-color: #2A3F38;
+    --h3-color: #3A5248;
+    --h4-color: #4A6558;
+    --h5-color: #5A7868;
+    --h6-color: #6A8B78;
+    
+    --code-background: #F0EFE9;
+    --code-normal: #2D3035;
+    
+    --divider-color: #E0DDD4;
+    --shadow-color: rgba(0, 0, 0, 0.06);
+    --shadow-color-hover: rgba(0, 0, 0, 0.1);
+    
+    --checkbox-color: var(--interactive-accent);
+    --checkbox-border-color: #B8B5AB;
+    
+    --graph-line: rgba(107, 144, 128, 0.3);
+    --graph-node: var(--interactive-accent);
+    --graph-node-focused: var(--interactive-accent-hover);
 }
 
-/* --- CONFIGURATION DU MODE SOMBRE 🌙 --- */
+/* ==========================================================================
+   3. PALETTE - MODE SOMBRE (Anti-fatigue oculaire)
+   ========================================================================== */
 .theme-dark {
-    /* Tes variables perso */
-    --nav-bar-color: #4b0082;
+    --background-primary: #1C1E22;
+    --background-primary-alt: #22252A;
+    --background-secondary: #171A1D;
+    --background-secondary-alt: #13151A;
+    --background-modifier-border: #2D3038;
+    --background-modifier-hover: rgba(141, 168, 164, 0.08);
+    --background-modifier-active: rgba(141, 168, 164, 0.15);
+    --background-modifier-success: rgba(129, 199, 132, 0.15);
+    --background-modifier-error: rgba(239, 83, 80, 0.15);
+    --background-modifier-warning: rgba(255, 202, 40, 0.15);
+
+    --text-normal: #E0E2E5;
+    --text-muted: #A0A4AC;
+    --text-faint: #60656E;
+    --text-on-accent: #FFFFFF;
+
+    --interactive-accent: #8DACA6;
+    --interactive-accent-hover: #A3BEB9;
+    --text-accent: #8DACA6;
+    --text-accent-hover: #B8CCC9;
     
-    /* Surcharge des variables Obsidian (valeurs par défaut ou tes choix) */
-    --background-primary: #1e1e1e; /* Exemple: gris très sombre */
-    --color-accent: #ff9900;       /* On réutilise l'orange pour l'accent sombre */
+    --text-selection: rgba(141, 172, 166, 0.25);
+    --text-highlight-bg: rgba(251, 192, 45, 0.25);
+
+    --h1-color: #F0F2F4;
+    --h2-color: #DCE0E4;
+    --h3-color: #C4CAD0;
+    --h4-color: #B0B8C0;
+    --h5-color: #9CA6B0;
+    --h6-color: #8894A0;
+    
+    --code-background: #252830;
+    --code-normal: #E0E2E5;
+    
+    --divider-color: #333840;
+    --shadow-color: rgba(0, 0, 0, 0.25);
+    --shadow-color-hover: rgba(0, 0, 0, 0.35);
+    
+    --checkbox-color: var(--interactive-accent);
+    --checkbox-border-color: #4A4E58;
+    
+    --graph-line: rgba(141, 172, 166, 0.25);
+    --graph-node: var(--interactive-accent);
+    --graph-node-focused: var(--interactive-accent-hover);
 }
 
-/* --- APPLICATION DU STYLE --- */
-.nav-buttons-container {
-    background-color: var(--nav-bar-color);
-    /* On arrondit un peu les coins pour faire moderne */
-    border-radius: 0 0 10px 10px; 
+/* ==========================================================================
+   4. WORKSPACE & LAYOUT GÉNÉRAL
+   ========================================================================== */
+
+/* Fond de l'application */
+.app-container {
+    background-color: var(--background-secondary);
+}
+
+/* Zone d'écriture principale */
+.markdown-source-view.mod-cm6 .cm-scroller,
+.markdown-preview-view {
+    padding: var(--size-4-5) var(--size-4-6);
+    font-family: var(--font-text-theme);
+    line-height: var(--font-body-line-height);
+}
+
+/* Largeur de ligne optimale pour la lecture */
+.markdown-source-view.mod-cm6 .cm-content,
+.markdown-preview-view {
+    max-width: var(--line-width);
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   5. BARRE LATÉRALE (File Explorer) - Améliorée
+   ========================================================================== */
+
+.workspace-split.mod-left-split {
+    background-color: var(--background-secondary);
+}
+
+/* Titre des panneaux latéraux */
+.workspace-leaf-content[data-type="file-explorer"] .nav-header,
+.workspace-leaf-content .view-header-title {
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-faint);
+    padding: var(--size-4-3) var(--size-4-4);
+}
+
+/* Fichiers et dossiers - Base */
+.nav-file-title, .nav-folder-title {
+    border-radius: var(--radius-s);
+    transition: background-color var(--anim-duration-fast) var(--anim-motion),
+                color var(--anim-duration-fast) var(--anim-motion),
+                border-color var(--anim-duration-fast) var(--anim-motion),
+                transform var(--anim-duration-fast) var(--anim-motion);
+    font-family: var(--font-text-theme);
+    padding: 5px 8px;
+    margin: 1px 4px;
+    display: flex;
+    align-items: center;
+    width: calc(100% - 8px);
+    box-sizing: border-box;
+}
+
+/* CORRECTIF ALIGNEMENT FICHIERS */
+.nav-file-title {
+    /* Forcer le padding-left pour surcharger le style inline d'Obsidian */
+    padding-left: 8px !important;
+    border-left: 3px solid transparent;
+    margin-left: 0 !important;
+}
+
+/* Fichiers dans les sous-dossiers - indentation progressive */
+.nav-folder .nav-folder .nav-file-title {
+    padding-left: 16px !important;
+}
+
+.nav-folder .nav-folder .nav-folder .nav-file-title {
+    padding-left: 24px !important;
+}
+
+.nav-folder .nav-folder .nav-folder .nav-folder .nav-file-title {
+    padding-left: 32px !important;
+}
+
+.nav-file-title-content, .nav-folder-title-content {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Hover sur fichiers - Teinte légère de la couleur du dossier parent */
+.nav-file-title:hover {
+    background-color: color-mix(in srgb, var(--folder-color, var(--interactive-accent)) 12%, transparent);
+    border-left-color: color-mix(in srgb, var(--folder-color, var(--interactive-accent)) 40%, transparent);
+    transform: translateX(2px);
+}
+
+/* Fichier actif - Hérite la couleur du dossier parent */
+.nav-file-title.is-active {
+    background-color: var(--background-modifier-active);
+    color: var(--folder-color, var(--text-accent)) !important;
+    font-weight: 600;
+    border-left-color: var(--folder-color, var(--interactive-accent));
+}
+
+/* Assurer que le texte du fichier actif prend bien la couleur */
+.nav-file-title.is-active .nav-file-title-content {
+    color: var(--folder-color, var(--text-accent)) !important;
+}
+
+/* ==========================================================================
+   DOSSIERS COLORÉS - Héritage vers fichiers enfants
+   La variable --folder-color est définie sur .nav-folder pour être
+   héritée par les fichiers (.nav-file) qu'il contient
+   ========================================================================== */
+
+:root {
+    /* Bleus & Cyans */
+    --folder-1: #5C9EAD;  /* Bleu Sarcelle */
+    --folder-2: #9AB8C2;  /* Bleu Glacier */
+    --folder-3: #6A9FB5;  /* Bleu Acier */
+    --folder-4: #7EB8C9;  /* Bleu Ciel */
+    
+    /* Verts */
+    --folder-5: #7CB083;  /* Vert Sauge */
+    --folder-6: #85B8A0;  /* Menthe */
+    --folder-7: #B5C99A;  /* Vert Tilleul */
+    --folder-8: #8FBC8F;  /* Vert Mousse */
+    --folder-9: #9DC183;  /* Vert Pomme */
+    
+    /* Oranges & Pêches */
+    --folder-10: #E8A87C; /* Pêche */
+    --folder-11: #E6B89C; /* Abricot */
+    --folder-12: #DBAD6A; /* Miel */
+    --folder-13: #D4A574; /* Sable Doré */
+    
+    /* Roses & Rouges doux */
+    --folder-14: #D4A5A5; /* Rose Poudré */
+    --folder-15: #C99A9A; /* Vieux Rose */
+    --folder-16: #E0A8A8; /* Rose Corail */
+    
+    /* Violets & Lavandes */
+    --folder-17: #8E94C4; /* Lavande */
+    --folder-18: #A8A4CE; /* Parme */
+    --folder-19: #9A8FBC; /* Violet Doux */
+    --folder-20: #B8A9C9; /* Lilas */
+    
+    /* Neutres chauds */
+    --folder-21: #C89B7B; /* Caramel */
+    --folder-22: #C9B8A8; /* Taupe */
+    --folder-23: #B5A99A; /* Grège */
+    --folder-24: #A89F91; /* Pierre */
+}
+
+/* Attribution des couleurs aux dossiers (cycle de 24) */
+.nav-folder:nth-child(24n+1) { --folder-color: var(--folder-1); }
+.nav-folder:nth-child(24n+2) { --folder-color: var(--folder-2); }
+.nav-folder:nth-child(24n+3) { --folder-color: var(--folder-3); }
+.nav-folder:nth-child(24n+4) { --folder-color: var(--folder-4); }
+.nav-folder:nth-child(24n+5) { --folder-color: var(--folder-5); }
+.nav-folder:nth-child(24n+6) { --folder-color: var(--folder-6); }
+.nav-folder:nth-child(24n+7) { --folder-color: var(--folder-7); }
+.nav-folder:nth-child(24n+8) { --folder-color: var(--folder-8); }
+.nav-folder:nth-child(24n+9) { --folder-color: var(--folder-9); }
+.nav-folder:nth-child(24n+10) { --folder-color: var(--folder-10); }
+.nav-folder:nth-child(24n+11) { --folder-color: var(--folder-11); }
+.nav-folder:nth-child(24n+12) { --folder-color: var(--folder-12); }
+.nav-folder:nth-child(24n+13) { --folder-color: var(--folder-13); }
+.nav-folder:nth-child(24n+14) { --folder-color: var(--folder-14); }
+.nav-folder:nth-child(24n+15) { --folder-color: var(--folder-15); }
+.nav-folder:nth-child(24n+16) { --folder-color: var(--folder-16); }
+.nav-folder:nth-child(24n+17) { --folder-color: var(--folder-17); }
+.nav-folder:nth-child(24n+18) { --folder-color: var(--folder-18); }
+.nav-folder:nth-child(24n+19) { --folder-color: var(--folder-19); }
+.nav-folder:nth-child(24n+20) { --folder-color: var(--folder-20); }
+.nav-folder:nth-child(24n+21) { --folder-color: var(--folder-21); }
+.nav-folder:nth-child(24n+22) { --folder-color: var(--folder-22); }
+.nav-folder:nth-child(24n+23) { --folder-color: var(--folder-23); }
+.nav-folder:nth-child(24n+24) { --folder-color: var(--folder-24); }
+
+.nav-folder-title {
+    background: linear-gradient(135deg, var(--folder-color) 0%, color-mix(in srgb, var(--folder-color) 85%, #000) 100%);
+    border: 1px solid transparent;
+    color: #FFFFFF !important;
+    border-radius: var(--radius-m);
+    margin-bottom: 3px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+.nav-folder-collapse-indicator {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.nav-folder-title:hover {
+    background: var(--background-primary) !important;
+    border-color: var(--folder-color) !important;
+    color: var(--folder-color) !important;
+    box-shadow: 0 2px 8px var(--shadow-color-hover);
+    transform: translateX(3px);
+}
+
+.nav-folder-title:hover .nav-folder-collapse-indicator {
+    color: var(--folder-color);
+}
+
+/* ==========================================================================
+   6. ONGLETS (Tabs) - Design Moderne
+   ========================================================================== */
+
+.workspace-tab-header-container {
+    background-color: var(--background-secondary);
+    padding: 6px 8px 0;
+    gap: 4px;
+}
+
+.workspace-tab-header {
+    background-color: transparent;
+    border-radius: var(--radius-m) var(--radius-m) 0 0;
+    padding: 8px 16px;
+    font-family: var(--font-text-theme);
+    font-size: 0.9em;
+    color: var(--text-muted);
+    border: 1px solid transparent;
+    border-bottom: none;
+    transition: all var(--anim-duration-fast) var(--anim-motion);
+}
+
+.workspace-tab-header:hover {
+    background-color: var(--background-modifier-hover);
+    color: var(--text-normal);
+}
+
+.workspace-tab-header.is-active {
+    background-color: var(--background-primary);
+    color: var(--text-accent);
+    font-weight: 500;
+    border-color: var(--background-modifier-border);
+    box-shadow: 0 -2px 8px var(--shadow-color);
+}
+
+/* Indicateur de tab actif */
+.workspace-tab-header.is-active::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--background-primary);
+}
+
+/* ==========================================================================
+   7. ÉDITEUR - TYPOGRAPHIE & TITRES
+   ========================================================================== */
+
+/* Titres avec styles distincts */
+.cm-header, h1, h2, h3, h4, h5, h6,
+.markdown-preview-view h1,
+.markdown-preview-view h2,
+.markdown-preview-view h3,
+.markdown-preview-view h4,
+.markdown-preview-view h5,
+.markdown-preview-view h6 {
+    font-family: var(--font-text-theme);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+}
+
+h1, .cm-header-1, .markdown-preview-view h1 {
+    font-size: 2em;
+    color: var(--h1-color);
+    margin: 1.5em 0 0.5em;
+    padding-bottom: 0.3em;
+    border-bottom: 2px solid var(--divider-color);
+}
+
+h2, .cm-header-2, .markdown-preview-view h2 {
+    font-size: 1.6em;
+    color: var(--h2-color);
+    margin: 1.3em 0 0.4em;
+}
+
+h3, .cm-header-3, .markdown-preview-view h3 {
+    font-size: 1.3em;
+    color: var(--h3-color);
+    margin: 1.2em 0 0.3em;
+}
+
+h4, .cm-header-4, .markdown-preview-view h4 {
+    font-size: 1.1em;
+    color: var(--h4-color);
+    margin: 1em 0 0.3em;
+}
+
+h5, .cm-header-5, .markdown-preview-view h5 {
+    font-size: 1em;
+    color: var(--h5-color);
+    font-weight: 600;
+}
+
+h6, .cm-header-6, .markdown-preview-view h6 {
+    font-size: 0.95em;
+    color: var(--h6-color);
+    font-weight: 600;
+    font-style: italic;
+}
+
+/* ==========================================================================
+   8. CHECKBOXES STYLÉES (Productivité)
+   ========================================================================== */
+
+/* Base des checkboxes */
+input[type="checkbox"],
+.task-list-item-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--checkbox-border-color);
+    border-radius: var(--radius-s);
+    background-color: var(--background-primary);
+    cursor: pointer;
+    transition: all var(--anim-duration-fast) var(--anim-motion);
+    position: relative;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+input[type="checkbox"]:hover,
+.task-list-item-checkbox:hover {
+    border-color: var(--interactive-accent);
+    background-color: var(--background-modifier-hover);
+}
+
+/* Checkbox cochée */
+input[type="checkbox"]:checked,
+.task-list-item-checkbox:checked {
+    background-color: var(--interactive-accent);
+    border-color: var(--interactive-accent);
+}
+
+input[type="checkbox"]:checked::after,
+.task-list-item-checkbox:checked::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-on-accent);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Tâche complétée - barré */
+.task-list-item.is-checked .task-list-item-checkbox ~ *,
+li.is-checked {
+    text-decoration: line-through;
+    color: var(--text-faint);
+}
+
+/* ==========================================================================
+   9. CALLOUTS PERSONNALISÉS (Notes, Warning, etc.)
+   ========================================================================== */
+
+.callout {
+    border-radius: var(--radius-l);
+    border: 1px solid var(--background-modifier-border);
+    padding: 0;
+    margin: 16px 0;
+    overflow: hidden;
+    box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+.callout-title {
+    padding: 12px 16px;
+    font-weight: 600;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.callout-content {
+    padding: 0 16px 16px;
+}
+
+/* Callout INFO */
+.callout[data-callout="info"],
+.callout[data-callout="note"] {
+    background-color: rgba(92, 158, 173, 0.08);
+    border-color: rgba(92, 158, 173, 0.3);
+}
+.callout[data-callout="info"] .callout-title,
+.callout[data-callout="note"] .callout-title {
+    background-color: rgba(92, 158, 173, 0.15);
+    color: #5C9EAD;
+}
+
+/* Callout WARNING */
+.callout[data-callout="warning"],
+.callout[data-callout="caution"] {
+    background-color: rgba(232, 168, 124, 0.08);
+    border-color: rgba(232, 168, 124, 0.3);
+}
+.callout[data-callout="warning"] .callout-title,
+.callout[data-callout="caution"] .callout-title {
+    background-color: rgba(232, 168, 124, 0.15);
+    color: #D4956C;
+}
+
+/* Callout SUCCESS / TIP */
+.callout[data-callout="success"],
+.callout[data-callout="tip"],
+.callout[data-callout="done"] {
+    background-color: rgba(124, 176, 131, 0.08);
+    border-color: rgba(124, 176, 131, 0.3);
+}
+.callout[data-callout="success"] .callout-title,
+.callout[data-callout="tip"] .callout-title,
+.callout[data-callout="done"] .callout-title {
+    background-color: rgba(124, 176, 131, 0.15);
+    color: #5A9A62;
+}
+
+/* Callout ERROR / DANGER */
+.callout[data-callout="error"],
+.callout[data-callout="danger"],
+.callout[data-callout="bug"] {
+    background-color: rgba(207, 102, 102, 0.08);
+    border-color: rgba(207, 102, 102, 0.3);
+}
+.callout[data-callout="error"] .callout-title,
+.callout[data-callout="danger"] .callout-title,
+.callout[data-callout="bug"] .callout-title {
+    background-color: rgba(207, 102, 102, 0.15);
+    color: #C75050;
+}
+
+/* Callout QUESTION */
+.callout[data-callout="question"],
+.callout[data-callout="help"],
+.callout[data-callout="faq"] {
+    background-color: rgba(142, 148, 196, 0.08);
+    border-color: rgba(142, 148, 196, 0.3);
+}
+.callout[data-callout="question"] .callout-title,
+.callout[data-callout="help"] .callout-title,
+.callout[data-callout="faq"] .callout-title {
+    background-color: rgba(142, 148, 196, 0.15);
+    color: #7A80B8;
+}
+
+/* Callout QUOTE */
+.callout[data-callout="quote"],
+.callout[data-callout="cite"] {
+    background-color: var(--background-primary-alt);
+    border-left: 4px solid var(--text-faint);
+}
+.callout[data-callout="quote"] .callout-title,
+.callout[data-callout="cite"] .callout-title {
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   10. BLOCKQUOTES ÉLÉGANTS
+   ========================================================================== */
+
+blockquote {
+    border-left: 4px solid var(--interactive-accent);
+    background: linear-gradient(90deg, 
+        rgba(107, 144, 128, 0.06) 0%, 
+        transparent 100%);
+    padding: 16px 20px;
+    margin: 16px 0;
+    border-radius: 0 var(--radius-m) var(--radius-m) 0;
+    font-style: italic;
+    color: var(--text-muted);
+    position: relative;
+}
+
+blockquote::before {
+    content: """;
+    position: absolute;
+    top: -5px;
+    left: 12px;
+    font-size: 3em;
+    color: var(--interactive-accent);
+    opacity: 0.2;
+    font-family: Georgia, serif;
+}
+
+/* ==========================================================================
+   11. CODE BLOCKS & INLINE CODE
+   ========================================================================== */
+
+/* Code inline */
+code, .cm-inline-code {
+    font-family: var(--font-monospace-theme);
+    background-color: var(--code-background);
+    color: var(--code-normal);
+    padding: 2px 6px;
+    border-radius: var(--radius-s);
+    font-size: 0.88em;
+    border: 1px solid var(--background-modifier-border);
+}
+
+/* Blocs de code */
+pre, .markdown-preview-view pre {
+    background-color: var(--code-background);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--radius-m);
+    padding: 16px;
+    overflow-x: auto;
+    margin: 16px 0;
+    box-shadow: inset 0 1px 3px var(--shadow-color);
+}
+
+pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+/* Langage du bloc de code */
+.markdown-preview-view pre[class*="language-"]::before {
+    content: attr(class);
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 0.7em;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   12. TABLEAUX MODERNES
+   ========================================================================== */
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 20px 0;
+    font-size: 0.95em;
+    border-radius: var(--radius-m);
+    overflow: hidden;
+    box-shadow: 0 1px 4px var(--shadow-color);
+}
+
+thead {
+    background: linear-gradient(135deg, 
+        var(--interactive-accent) 0%, 
+        color-mix(in srgb, var(--interactive-accent) 80%, #000) 100%);
+}
+
+th {
+    color: var(--text-on-accent);
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--background-modifier-border);
+    background-color: var(--background-primary);
+}
+
+/* Lignes alternées */
+tbody tr:nth-child(even) td {
+    background-color: var(--background-primary-alt);
+}
+
+/* Hover sur les lignes */
+tbody tr:hover td {
+    background-color: var(--background-modifier-hover);
+}
+
+/* ==========================================================================
+   13. LIENS & RÉFÉRENCES
+   ========================================================================== */
+
+a, .cm-link, .cm-hmd-internal-link,
+.markdown-preview-view a {
+    color: var(--text-accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all var(--anim-duration-fast) var(--anim-motion);
+}
+
+a:hover, .cm-link:hover, .cm-hmd-internal-link:hover,
+.markdown-preview-view a:hover {
+    color: var(--text-accent-hover);
+    border-bottom-color: var(--text-accent-hover);
+}
+
+/* Liens externes - icône */
+.external-link::after {
+    content: " ↗";
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+/* Liens internes non résolus */
+.is-unresolved {
+    opacity: 0.6;
+    border-bottom-style: dashed;
+}
+
+/* ==========================================================================
+   14. TAGS MODERNES (Style Pilule)
+   ========================================================================== */
+
+.cm-hashtag, a.tag, .tag {
+    background-color: var(--background-secondary-alt);
+    color: var(--text-accent);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.82em;
+    font-weight: 500;
+    text-decoration: none !important;
+    border: 1px solid var(--background-modifier-border);
+    transition: all var(--anim-duration-fast) var(--anim-motion);
+    display: inline-block;
+    line-height: 1.4;
+}
+
+.cm-hashtag:hover, a.tag:hover, .tag:hover {
+    background-color: var(--interactive-accent);
+    color: var(--text-on-accent);
+    border-color: var(--interactive-accent);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px var(--shadow-color-hover);
+}
+
+/* ==========================================================================
+   15. SURBRILLANCE (Highlight) ==texte==
+   ========================================================================== */
+
+mark, .cm-highlight {
+    background-color: var(--text-highlight-bg);
+    color: inherit;
+    padding: 1px 4px;
+    border-radius: 3px;
+}
+
+/* ==========================================================================
+   16. BARRE DE STATUT
+   ========================================================================== */
+
+.status-bar {
+    background-color: var(--background-secondary);
+    border-top: 1px solid var(--background-modifier-border);
+    font-size: 0.75em;
+    color: var(--text-faint);
+    padding: 4px 12px;
+}
+
+.status-bar-item {
+    padding: 0 8px;
+}
+
+/* ==========================================================================
+   17. FENÊTRES MODALES & POPUPS
+   ========================================================================== */
+
+.modal {
+    border-radius: var(--radius-xl);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--background-modifier-border);
+}
+
+.modal-title {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.modal-close-button {
+    transition: color var(--anim-duration-fast);
+}
+
+.modal-close-button:hover {
+    color: var(--text-accent);
+}
+
+/* Suggestions (liens, commandes) */
+.suggestion-container {
+    border-radius: var(--radius-m);
+    box-shadow: 0 8px 30px var(--shadow-color-hover);
+    border: 1px solid var(--background-modifier-border);
+}
+
+.suggestion-item {
+    padding: 8px 12px;
+    border-radius: var(--radius-s);
+}
+
+.suggestion-item.is-selected {
+    background-color: var(--background-modifier-active);
+}
+
+/* ==========================================================================
+   18. BOUTONS
+   ========================================================================== */
+
+button {
+    font-family: var(--font-text-theme);
+    border-radius: var(--radius-m);
+    padding: 8px 16px;
+    transition: all var(--anim-duration-fast) var(--anim-motion);
+}
+
+button.mod-cta {
+    background: linear-gradient(135deg, 
+        var(--interactive-accent) 0%, 
+        color-mix(in srgb, var(--interactive-accent) 85%, #000) 100%);
+    color: var(--text-on-accent);
+    font-weight: 500;
+    border: none;
+    box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+button.mod-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--shadow-color-hover);
+}
+
+button.mod-cta:active {
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   19. GRAPHE (Graph View)
+   ========================================================================== */
+
+.graph-view.color-fill-tag {
+    color: var(--interactive-accent);
+}
+
+.graph-view.color-fill-attachment {
+    color: var(--text-faint);
+}
+
+.graph-view.color-arrow {
+    color: var(--text-muted);
+}
+
+.graph-view.color-line {
+    color: var(--graph-line);
+}
+
+.graph-view.color-text {
+    color: var(--text-normal);
+}
+
+/* ==========================================================================
+   20. CANVAS
+   ========================================================================== */
+
+.canvas-node {
+    border-radius: var(--radius-m);
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.canvas-node:hover {
+    box-shadow: 0 4px 16px var(--shadow-color-hover);
+}
+
+.canvas-node.is-selected {
+    box-shadow: 0 0 0 3px var(--interactive-accent),
+                0 4px 16px var(--shadow-color-hover);
+}
+
+/* ==========================================================================
+   21. MODE FOCUS / ZEN (Productivité)
+   ========================================================================== */
+
+/* Activer via Style Settings ou CSS class */
+body.focus-mode .workspace-ribbon,
+body.focus-mode .workspace-split.mod-left-split,
+body.focus-mode .workspace-split.mod-right-split,
+body.focus-mode .status-bar {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+body.focus-mode:hover .workspace-ribbon,
+body.focus-mode:hover .workspace-split.mod-left-split,
+body.focus-mode:hover .workspace-split.mod-right-split,
+body.focus-mode:hover .status-bar {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Ligne active surlignée */
+.cm-active.cm-line {
+    background-color: var(--background-modifier-hover);
+    border-radius: var(--radius-s);
+}
+
+/* ==========================================================================
+   22. LISTES À PUCES
+   ========================================================================== */
+
+ul, ol {
+    padding-left: 24px;
+}
+
+ul > li::marker {
+    color: var(--interactive-accent);
+}
+
+ol > li::marker {
+    color: var(--text-accent);
+    font-weight: 500;
+}
+
+/* Listes imbriquées */
+ul ul, ol ul {
+    list-style-type: circle;
+}
+
+ul ul ul, ol ul ul {
+    list-style-type: square;
+}
+
+/* ==========================================================================
+   23. SÉPARATEURS (Horizontal Rules)
+   ========================================================================== */
+
+hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--divider-color) 20%, 
+        var(--divider-color) 80%, 
+        transparent);
+    margin: 32px 0;
+}
+
+/* ==========================================================================
+   24. PROPERTIES / FRONTMATTER
+   ========================================================================== */
+
+.metadata-container {
+    background-color: var(--background-primary-alt);
+    border-radius: var(--radius-m);
+    border: 1px solid var(--background-modifier-border);
+    padding: 12px 16px;
+    margin-bottom: 20px;
+}
+
+.metadata-property {
+    padding: 4px 0;
+    border-bottom: 1px dashed var(--background-modifier-border);
+}
+
+.metadata-property:last-child {
+    border-bottom: none;
+}
+
+.metadata-property-key {
+    color: var(--text-accent);
+    font-weight: 500;
+    font-size: 0.9em;
+}
+
+/* ==========================================================================
+   25. EMBEDS (Notes intégrées)
+   ========================================================================== */
+
+.markdown-embed {
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--radius-m);
+    background-color: var(--background-primary-alt);
+    padding: 16px;
+    margin: 12px 0;
+    box-shadow: 0 1px 4px var(--shadow-color);
+}
+
+.markdown-embed-title {
+    font-weight: 600;
+    color: var(--text-accent);
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+
+/* ==========================================================================
+   26. SCROLLBARS MINIMALISTES
+   ========================================================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--background-modifier-border);
+    border-radius: 4px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--text-faint);
+}
+
+/* ==========================================================================
+   27. ACCESSIBILITÉ - FOCUS VISIBLE
+   ========================================================================== */
+
+*:focus-visible {
+    outline: 2px solid var(--interactive-accent);
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    box-shadow: 0 0 0 3px rgba(107, 144, 128, 0.3);
+}
+
+/* ==========================================================================
+   28. ANIMATIONS SUBTILES
+   ========================================================================== */
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal {
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* Désactiver les animations si préféré */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
 }
