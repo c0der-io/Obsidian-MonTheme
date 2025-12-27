@@ -38,7 +38,7 @@ body {
 }
 
 /* ==========================================================================
-   2. PALETTE - MODE CLAIR (Optimisée contraste WCAG)
+   2. PALETTE - MODE CLAIR
    ========================================================================== */
 .theme-light {
     --background-primary: #FAFAF8;
@@ -48,9 +48,6 @@ body {
     --background-modifier-border: #D9D6CC;
     --background-modifier-hover: rgba(125, 156, 139, 0.08);
     --background-modifier-active: rgba(125, 156, 139, 0.15);
-    --background-modifier-success: #E8F5E9;
-    --background-modifier-error: #FFEBEE;
-    --background-modifier-warning: #FFF8E1;
 
     --text-normal: #2D3035;
     --text-muted: #5A5E66;
@@ -81,14 +78,10 @@ body {
     
     --checkbox-color: var(--interactive-accent);
     --checkbox-border-color: #B8B5AB;
-    
-    --graph-line: rgba(107, 144, 128, 0.3);
-    --graph-node: var(--interactive-accent);
-    --graph-node-focused: var(--interactive-accent-hover);
 }
 
 /* ==========================================================================
-   3. PALETTE - MODE SOMBRE (Anti-fatigue oculaire)
+   3. PALETTE - MODE SOMBRE
    ========================================================================== */
 .theme-dark {
     --background-primary: #1C1E22;
@@ -98,9 +91,6 @@ body {
     --background-modifier-border: #2D3038;
     --background-modifier-hover: rgba(141, 168, 164, 0.08);
     --background-modifier-active: rgba(141, 168, 164, 0.15);
-    --background-modifier-success: rgba(129, 199, 132, 0.15);
-    --background-modifier-error: rgba(239, 83, 80, 0.15);
-    --background-modifier-warning: rgba(255, 202, 40, 0.15);
 
     --text-normal: #E0E2E5;
     --text-muted: #A0A4AC;
@@ -131,22 +121,15 @@ body {
     
     --checkbox-color: var(--interactive-accent);
     --checkbox-border-color: #4A4E58;
-    
-    --graph-line: rgba(141, 172, 166, 0.25);
-    --graph-node: var(--interactive-accent);
-    --graph-node-focused: var(--interactive-accent-hover);
 }
 
 /* ==========================================================================
-   4. WORKSPACE & LAYOUT GÉNÉRAL
+   4. WORKSPACE & LAYOUT
    ========================================================================== */
-
-/* Fond de l'application */
 .app-container {
     background-color: var(--background-secondary);
 }
 
-/* Zone d'écriture principale */
 .markdown-source-view.mod-cm6 .cm-scroller,
 .markdown-preview-view {
     padding: var(--size-4-5) var(--size-4-6);
@@ -154,7 +137,6 @@ body {
     line-height: var(--font-body-line-height);
 }
 
-/* Largeur de ligne optimale pour la lecture */
 .markdown-source-view.mod-cm6 .cm-content,
 .markdown-preview-view {
     max-width: var(--line-width);
@@ -162,14 +144,12 @@ body {
 }
 
 /* ==========================================================================
-   5. BARRE LATÉRALE (File Explorer) - Améliorée
+   5. BARRE LATÉRALE (File Explorer)
    ========================================================================== */
-
 .workspace-split.mod-left-split {
     background-color: var(--background-secondary);
 }
 
-/* Titre des panneaux latéraux */
 .workspace-leaf-content[data-type="file-explorer"] .nav-header,
 .workspace-leaf-content .view-header-title {
     font-weight: 600;
@@ -183,10 +163,6 @@ body {
 /* Fichiers et dossiers - Base */
 .nav-file-title, .nav-folder-title {
     border-radius: var(--radius-s);
-    transition: background-color var(--anim-duration-fast) var(--anim-motion),
-                color var(--anim-duration-fast) var(--anim-motion),
-                border-color var(--anim-duration-fast) var(--anim-motion),
-                transform var(--anim-duration-fast) var(--anim-motion);
     font-family: var(--font-text-theme);
     padding: 5px 8px;
     margin: 1px 4px;
@@ -194,27 +170,6 @@ body {
     align-items: center;
     width: calc(100% - 8px);
     box-sizing: border-box;
-}
-
-/* CORRECTIF ALIGNEMENT FICHIERS */
-.nav-file-title {
-    /* Forcer le padding-left pour surcharger le style inline d'Obsidian */
-    padding-left: 8px !important;
-    border-left: 3px solid transparent;
-    margin-left: 0 !important;
-}
-
-/* Fichiers dans les sous-dossiers - indentation progressive */
-.nav-folder .nav-folder .nav-file-title {
-    padding-left: 16px !important;
-}
-
-.nav-folder .nav-folder .nav-folder .nav-file-title {
-    padding-left: 24px !important;
-}
-
-.nav-folder .nav-folder .nav-folder .nav-folder .nav-file-title {
-    padding-left: 32px !important;
 }
 
 .nav-file-title-content, .nav-folder-title-content {
@@ -225,127 +180,405 @@ body {
     text-overflow: ellipsis;
 }
 
-/* Hover sur fichiers - Teinte légère de la couleur du dossier parent */
-.nav-file-title:hover {
-    background-color: color-mix(in srgb, var(--folder-color, var(--interactive-accent)) 12%, transparent);
-    border-left-color: color-mix(in srgb, var(--folder-color, var(--interactive-accent)) 40%, transparent);
-    transform: translateX(2px);
+/* CORRECTIF ALIGNEMENT FICHIERS */
+.nav-file-title {
+    padding-left: 8px !important;
+    border-left: 3px solid transparent;
+    margin-left: 0 !important;
 }
 
-/* Fichier actif - Hérite la couleur du dossier parent */
-.nav-file-title.is-active {
-    background-color: var(--background-modifier-active);
-    color: var(--folder-color, var(--text-accent)) !important;
-    font-weight: 600;
-    border-left-color: var(--folder-color, var(--interactive-accent));
-}
-
-/* Assurer que le texte du fichier actif prend bien la couleur */
-.nav-file-title.is-active .nav-file-title-content {
-    color: var(--folder-color, var(--text-accent)) !important;
-}
+.nav-folder .nav-folder .nav-file-title { padding-left: 16px !important; }
+.nav-folder .nav-folder .nav-folder .nav-file-title { padding-left: 24px !important; }
+.nav-folder .nav-folder .nav-folder .nav-folder .nav-file-title { padding-left: 32px !important; }
 
 /* ==========================================================================
-   DOSSIERS COLORÉS - Héritage vers fichiers enfants
-   La variable --folder-color est définie sur .nav-folder pour être
-   héritée par les fichiers (.nav-file) qu'il contient
+   6. DOSSIERS COLORÉS - HÉRITAGE COMPLET
+   Dossier principal = fond plein
+   Sous-dossiers = bordure (outline)
+   Fichiers = même couleur au hover/actif
    ========================================================================== */
 
-:root {
-    /* Bleus & Cyans */
-    --folder-1: #5C9EAD;  /* Bleu Sarcelle */
-    --folder-2: #9AB8C2;  /* Bleu Glacier */
-    --folder-3: #6A9FB5;  /* Bleu Acier */
-    --folder-4: #7EB8C9;  /* Bleu Ciel */
-    
-    /* Verts */
-    --folder-5: #7CB083;  /* Vert Sauge */
-    --folder-6: #85B8A0;  /* Menthe */
-    --folder-7: #B5C99A;  /* Vert Tilleul */
-    --folder-8: #8FBC8F;  /* Vert Mousse */
-    --folder-9: #9DC183;  /* Vert Pomme */
-    
-    /* Oranges & Pêches */
-    --folder-10: #E8A87C; /* Pêche */
-    --folder-11: #E6B89C; /* Abricot */
-    --folder-12: #DBAD6A; /* Miel */
-    --folder-13: #D4A574; /* Sable Doré */
-    
-    /* Roses & Rouges doux */
-    --folder-14: #D4A5A5; /* Rose Poudré */
-    --folder-15: #C99A9A; /* Vieux Rose */
-    --folder-16: #E0A8A8; /* Rose Corail */
-    
-    /* Violets & Lavandes */
-    --folder-17: #8E94C4; /* Lavande */
-    --folder-18: #A8A4CE; /* Parme */
-    --folder-19: #9A8FBC; /* Violet Doux */
-    --folder-20: #B8A9C9; /* Lilas */
-    
-    /* Neutres chauds */
-    --folder-21: #C89B7B; /* Caramel */
-    --folder-22: #C9B8A8; /* Taupe */
-    --folder-23: #B5A99A; /* Grège */
-    --folder-24: #A89F91; /* Pierre */
-}
-
-/* Attribution des couleurs aux dossiers (cycle de 24) */
-.nav-folder:nth-child(24n+1) { --folder-color: var(--folder-1); }
-.nav-folder:nth-child(24n+2) { --folder-color: var(--folder-2); }
-.nav-folder:nth-child(24n+3) { --folder-color: var(--folder-3); }
-.nav-folder:nth-child(24n+4) { --folder-color: var(--folder-4); }
-.nav-folder:nth-child(24n+5) { --folder-color: var(--folder-5); }
-.nav-folder:nth-child(24n+6) { --folder-color: var(--folder-6); }
-.nav-folder:nth-child(24n+7) { --folder-color: var(--folder-7); }
-.nav-folder:nth-child(24n+8) { --folder-color: var(--folder-8); }
-.nav-folder:nth-child(24n+9) { --folder-color: var(--folder-9); }
-.nav-folder:nth-child(24n+10) { --folder-color: var(--folder-10); }
-.nav-folder:nth-child(24n+11) { --folder-color: var(--folder-11); }
-.nav-folder:nth-child(24n+12) { --folder-color: var(--folder-12); }
-.nav-folder:nth-child(24n+13) { --folder-color: var(--folder-13); }
-.nav-folder:nth-child(24n+14) { --folder-color: var(--folder-14); }
-.nav-folder:nth-child(24n+15) { --folder-color: var(--folder-15); }
-.nav-folder:nth-child(24n+16) { --folder-color: var(--folder-16); }
-.nav-folder:nth-child(24n+17) { --folder-color: var(--folder-17); }
-.nav-folder:nth-child(24n+18) { --folder-color: var(--folder-18); }
-.nav-folder:nth-child(24n+19) { --folder-color: var(--folder-19); }
-.nav-folder:nth-child(24n+20) { --folder-color: var(--folder-20); }
-.nav-folder:nth-child(24n+21) { --folder-color: var(--folder-21); }
-.nav-folder:nth-child(24n+22) { --folder-color: var(--folder-22); }
-.nav-folder:nth-child(24n+23) { --folder-color: var(--folder-23); }
-.nav-folder:nth-child(24n+24) { --folder-color: var(--folder-24); }
-
+/* Style de base des dossiers */
 .nav-folder-title {
-    background: linear-gradient(135deg, var(--folder-color) 0%, color-mix(in srgb, var(--folder-color) 85%, #000) 100%);
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     color: #FFFFFF !important;
     border-radius: var(--radius-m);
     margin-bottom: 3px;
     font-weight: 500;
     letter-spacing: 0.2px;
     box-shadow: 0 1px 3px var(--shadow-color);
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 8px;
 }
 
 .nav-folder-collapse-indicator {
     color: rgba(255, 255, 255, 0.9);
 }
 
-.nav-folder-title:hover {
-    background: var(--background-primary) !important;
-    border-color: var(--folder-color) !important;
-    color: var(--folder-color) !important;
-    box-shadow: 0 2px 8px var(--shadow-color-hover);
-    transform: translateX(3px);
-}
+/* --- COULEUR 1 : Bleu Sarcelle #5C9EAD --- */
+.nav-folder:nth-child(36n+1) > .nav-folder-title { background: linear-gradient(135deg, #5C9EAD 0%, #4A8A9A 100%); }
+.nav-folder:nth-child(36n+1) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #5C9EAD !important; color: #5C9EAD !important; }
+.nav-folder:nth-child(36n+1) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #5C9EAD !important; }
+.nav-folder:nth-child(36n+1) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #5C9EAD !important; color: #5C9EAD !important; box-shadow: none; }
+.nav-folder:nth-child(36n+1) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #5C9EAD !important; }
+.nav-folder:nth-child(36n+1) .nav-folder .nav-folder-title:hover { background: rgba(92, 158, 173, 0.15) !important; }
+.nav-folder:nth-child(36n+1) .nav-file-title.is-active { color: #5C9EAD !important; border-left-color: #5C9EAD !important; }
+.nav-folder:nth-child(36n+1) .nav-file-title:hover { background-color: rgba(92, 158, 173, 0.12) !important; border-left-color: rgba(92, 158, 173, 0.5) !important; }
 
-.nav-folder-title:hover .nav-folder-collapse-indicator {
-    color: var(--folder-color);
-}
+/* --- COULEUR 2 : Bleu Glacier #9AB8C2 --- */
+.nav-folder:nth-child(36n+2) > .nav-folder-title { background: linear-gradient(135deg, #9AB8C2 0%, #88A6B0 100%); }
+.nav-folder:nth-child(36n+2) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #9AB8C2 !important; color: #9AB8C2 !important; }
+.nav-folder:nth-child(36n+2) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #9AB8C2 !important; }
+.nav-folder:nth-child(36n+2) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #9AB8C2 !important; color: #9AB8C2 !important; box-shadow: none; }
+.nav-folder:nth-child(36n+2) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #9AB8C2 !important; }
+.nav-folder:nth-child(36n+2) .nav-folder .nav-folder-title:hover { background: rgba(154, 184, 194, 0.15) !important; }
+.nav-folder:nth-child(36n+2) .nav-file-title.is-active { color: #9AB8C2 !important; border-left-color: #9AB8C2 !important; }
+.nav-folder:nth-child(36n+2) .nav-file-title:hover { background-color: rgba(154, 184, 194, 0.12) !important; border-left-color: rgba(154, 184, 194, 0.5) !important; }
+
+/* --- COULEUR 3 : Bleu Acier #6A9FB5 --- */
+.nav-folder:nth-child(36n+3) > .nav-folder-title { background: linear-gradient(135deg, #6A9FB5 0%, #588DA3 100%); }
+.nav-folder:nth-child(36n+3) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #6A9FB5 !important; color: #6A9FB5 !important; }
+.nav-folder:nth-child(36n+3) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #6A9FB5 !important; }
+.nav-folder:nth-child(36n+3) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #6A9FB5 !important; color: #6A9FB5 !important; box-shadow: none; }
+.nav-folder:nth-child(36n+3) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #6A9FB5 !important; }
+.nav-folder:nth-child(36n+3) .nav-folder .nav-folder-title:hover { background: rgba(106, 159, 181, 0.15) !important; }
+.nav-folder:nth-child(36n+3) .nav-file-title.is-active { color: #6A9FB5 !important; border-left-color: #6A9FB5 !important; }
+.nav-folder:nth-child(36n+3) .nav-file-title:hover { background-color: rgba(106, 159, 181, 0.12) !important; border-left-color: rgba(106, 159, 181, 0.5) !important; }
+
+/* --- COULEUR 4 : Turquoise #4DB6AC --- */
+.nav-folder:nth-child(36n+4) > .nav-folder-title { background: linear-gradient(135deg, #4DB6AC 0%, #3BA49A 100%); }
+.nav-folder:nth-child(36n+4) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #4DB6AC !important; color: #4DB6AC !important; }
+.nav-folder:nth-child(36n+4) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #4DB6AC !important; }
+.nav-folder:nth-child(36n+4) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #4DB6AC !important; color: #4DB6AC !important; box-shadow: none; }
+.nav-folder:nth-child(36n+4) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #4DB6AC !important; }
+.nav-folder:nth-child(36n+4) .nav-folder .nav-folder-title:hover { background: rgba(77, 182, 172, 0.15) !important; }
+.nav-folder:nth-child(36n+4) .nav-file-title.is-active { color: #4DB6AC !important; border-left-color: #4DB6AC !important; }
+.nav-folder:nth-child(36n+4) .nav-file-title:hover { background-color: rgba(77, 182, 172, 0.12) !important; border-left-color: rgba(77, 182, 172, 0.5) !important; }
+
+/* --- COULEUR 5 : Vert d'Eau #76C7C0 --- */
+.nav-folder:nth-child(36n+5) > .nav-folder-title { background: linear-gradient(135deg, #76C7C0 0%, #64B5AE 100%); }
+.nav-folder:nth-child(36n+5) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #76C7C0 !important; color: #76C7C0 !important; }
+.nav-folder:nth-child(36n+5) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #76C7C0 !important; }
+.nav-folder:nth-child(36n+5) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #76C7C0 !important; color: #76C7C0 !important; box-shadow: none; }
+.nav-folder:nth-child(36n+5) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #76C7C0 !important; }
+.nav-folder:nth-child(36n+5) .nav-folder .nav-folder-title:hover { background: rgba(118, 199, 192, 0.15) !important; }
+.nav-folder:nth-child(36n+5) .nav-file-title.is-active { color: #76C7C0 !important; border-left-color: #76C7C0 !important; }
+.nav-folder:nth-child(36n+5) .nav-file-title:hover { background-color: rgba(118, 199, 192, 0.12) !important; border-left-color: rgba(118, 199, 192, 0.5) !important; }
+
+/* --- COULEUR 6 : Aigue-Marine #6DBAB4 --- */
+.nav-folder:nth-child(36n+6) > .nav-folder-title { background: linear-gradient(135deg, #6DBAB4 0%, #5BA8A2 100%); }
+.nav-folder:nth-child(36n+6) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #6DBAB4 !important; color: #6DBAB4 !important; }
+.nav-folder:nth-child(36n+6) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #6DBAB4 !important; }
+.nav-folder:nth-child(36n+6) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #6DBAB4 !important; color: #6DBAB4 !important; box-shadow: none; }
+.nav-folder:nth-child(36n+6) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #6DBAB4 !important; }
+.nav-folder:nth-child(36n+6) .nav-folder .nav-folder-title:hover { background: rgba(109, 186, 180, 0.15) !important; }
+.nav-folder:nth-child(36n+6) .nav-file-title.is-active { color: #6DBAB4 !important; border-left-color: #6DBAB4 !important; }
+.nav-folder:nth-child(36n+6) .nav-file-title:hover { background-color: rgba(109, 186, 180, 0.12) !important; border-left-color: rgba(109, 186, 180, 0.5) !important; }
+
+/* --- COULEUR 7 : Vert Sauge #7CB083 --- */
+.nav-folder:nth-child(36n+7) > .nav-folder-title { background: linear-gradient(135deg, #7CB083 0%, #6A9E71 100%); }
+.nav-folder:nth-child(36n+7) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #7CB083 !important; color: #7CB083 !important; }
+.nav-folder:nth-child(36n+7) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #7CB083 !important; }
+.nav-folder:nth-child(36n+7) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #7CB083 !important; color: #7CB083 !important; box-shadow: none; }
+.nav-folder:nth-child(36n+7) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #7CB083 !important; }
+.nav-folder:nth-child(36n+7) .nav-folder .nav-folder-title:hover { background: rgba(124, 176, 131, 0.15) !important; }
+.nav-folder:nth-child(36n+7) .nav-file-title.is-active { color: #7CB083 !important; border-left-color: #7CB083 !important; }
+.nav-folder:nth-child(36n+7) .nav-file-title:hover { background-color: rgba(124, 176, 131, 0.12) !important; border-left-color: rgba(124, 176, 131, 0.5) !important; }
+
+/* --- COULEUR 8 : Menthe #85B8A0 --- */
+.nav-folder:nth-child(36n+8) > .nav-folder-title { background: linear-gradient(135deg, #85B8A0 0%, #73A68E 100%); }
+.nav-folder:nth-child(36n+8) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #85B8A0 !important; color: #85B8A0 !important; }
+.nav-folder:nth-child(36n+8) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #85B8A0 !important; }
+.nav-folder:nth-child(36n+8) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #85B8A0 !important; color: #85B8A0 !important; box-shadow: none; }
+.nav-folder:nth-child(36n+8) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #85B8A0 !important; }
+.nav-folder:nth-child(36n+8) .nav-folder .nav-folder-title:hover { background: rgba(133, 184, 160, 0.15) !important; }
+.nav-folder:nth-child(36n+8) .nav-file-title.is-active { color: #85B8A0 !important; border-left-color: #85B8A0 !important; }
+.nav-folder:nth-child(36n+8) .nav-file-title:hover { background-color: rgba(133, 184, 160, 0.12) !important; border-left-color: rgba(133, 184, 160, 0.5) !important; }
+
+/* --- COULEUR 9 : Vert Tilleul #B5C99A --- */
+.nav-folder:nth-child(36n+9) > .nav-folder-title { background: linear-gradient(135deg, #B5C99A 0%, #A3B788 100%); }
+.nav-folder:nth-child(36n+9) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #B5C99A !important; color: #B5C99A !important; }
+.nav-folder:nth-child(36n+9) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #B5C99A !important; }
+.nav-folder:nth-child(36n+9) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #B5C99A !important; color: #B5C99A !important; box-shadow: none; }
+.nav-folder:nth-child(36n+9) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #B5C99A !important; }
+.nav-folder:nth-child(36n+9) .nav-folder .nav-folder-title:hover { background: rgba(181, 201, 154, 0.15) !important; }
+.nav-folder:nth-child(36n+9) .nav-file-title.is-active { color: #B5C99A !important; border-left-color: #B5C99A !important; }
+.nav-folder:nth-child(36n+9) .nav-file-title:hover { background-color: rgba(181, 201, 154, 0.12) !important; border-left-color: rgba(181, 201, 154, 0.5) !important; }
+
+/* --- COULEUR 10 : Vert Mousse #8FBC8F --- */
+.nav-folder:nth-child(36n+10) > .nav-folder-title { background: linear-gradient(135deg, #8FBC8F 0%, #7DAA7D 100%); }
+.nav-folder:nth-child(36n+10) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #8FBC8F !important; color: #8FBC8F !important; }
+.nav-folder:nth-child(36n+10) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #8FBC8F !important; }
+.nav-folder:nth-child(36n+10) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #8FBC8F !important; color: #8FBC8F !important; box-shadow: none; }
+.nav-folder:nth-child(36n+10) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #8FBC8F !important; }
+.nav-folder:nth-child(36n+10) .nav-folder .nav-folder-title:hover { background: rgba(143, 188, 143, 0.15) !important; }
+.nav-folder:nth-child(36n+10) .nav-file-title.is-active { color: #8FBC8F !important; border-left-color: #8FBC8F !important; }
+.nav-folder:nth-child(36n+10) .nav-file-title:hover { background-color: rgba(143, 188, 143, 0.12) !important; border-left-color: rgba(143, 188, 143, 0.5) !important; }
+
+/* --- COULEUR 11 : Jaune Lin #D4C36A --- */
+.nav-folder:nth-child(36n+11) > .nav-folder-title { background: linear-gradient(135deg, #D4C36A 0%, #C2B158 100%); }
+.nav-folder:nth-child(36n+11) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #D4C36A !important; color: #D4C36A !important; }
+.nav-folder:nth-child(36n+11) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #D4C36A !important; }
+.nav-folder:nth-child(36n+11) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #D4C36A !important; color: #D4C36A !important; box-shadow: none; }
+.nav-folder:nth-child(36n+11) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #D4C36A !important; }
+.nav-folder:nth-child(36n+11) .nav-folder .nav-folder-title:hover { background: rgba(212, 195, 106, 0.15) !important; }
+.nav-folder:nth-child(36n+11) .nav-file-title.is-active { color: #D4C36A !important; border-left-color: #D4C36A !important; }
+.nav-folder:nth-child(36n+11) .nav-file-title:hover { background-color: rgba(212, 195, 106, 0.12) !important; border-left-color: rgba(212, 195, 106, 0.5) !important; }
+
+/* --- COULEUR 12 : Blé #D9C27E --- */
+.nav-folder:nth-child(36n+12) > .nav-folder-title { background: linear-gradient(135deg, #D9C27E 0%, #C7B06C 100%); }
+.nav-folder:nth-child(36n+12) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #D9C27E !important; color: #D9C27E !important; }
+.nav-folder:nth-child(36n+12) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #D9C27E !important; }
+.nav-folder:nth-child(36n+12) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #D9C27E !important; color: #D9C27E !important; box-shadow: none; }
+.nav-folder:nth-child(36n+12) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #D9C27E !important; }
+.nav-folder:nth-child(36n+12) .nav-folder .nav-folder-title:hover { background: rgba(217, 194, 126, 0.15) !important; }
+.nav-folder:nth-child(36n+12) .nav-file-title.is-active { color: #D9C27E !important; border-left-color: #D9C27E !important; }
+.nav-folder:nth-child(36n+12) .nav-file-title:hover { background-color: rgba(217, 194, 126, 0.12) !important; border-left-color: rgba(217, 194, 126, 0.5) !important; }
+
+/* --- COULEUR 13 : Pêche #E8A87C --- */
+.nav-folder:nth-child(36n+13) > .nav-folder-title { background: linear-gradient(135deg, #E8A87C 0%, #D6966A 100%); }
+.nav-folder:nth-child(36n+13) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #E8A87C !important; color: #E8A87C !important; }
+.nav-folder:nth-child(36n+13) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #E8A87C !important; }
+.nav-folder:nth-child(36n+13) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #E8A87C !important; color: #E8A87C !important; box-shadow: none; }
+.nav-folder:nth-child(36n+13) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #E8A87C !important; }
+.nav-folder:nth-child(36n+13) .nav-folder .nav-folder-title:hover { background: rgba(232, 168, 124, 0.15) !important; }
+.nav-folder:nth-child(36n+13) .nav-file-title.is-active { color: #E8A87C !important; border-left-color: #E8A87C !important; }
+.nav-folder:nth-child(36n+13) .nav-file-title:hover { background-color: rgba(232, 168, 124, 0.12) !important; border-left-color: rgba(232, 168, 124, 0.5) !important; }
+
+/* --- COULEUR 14 : Abricot #E6B89C --- */
+.nav-folder:nth-child(36n+14) > .nav-folder-title { background: linear-gradient(135deg, #E6B89C 0%, #D4A68A 100%); }
+.nav-folder:nth-child(36n+14) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #E6B89C !important; color: #E6B89C !important; }
+.nav-folder:nth-child(36n+14) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #E6B89C !important; }
+.nav-folder:nth-child(36n+14) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #E6B89C !important; color: #E6B89C !important; box-shadow: none; }
+.nav-folder:nth-child(36n+14) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #E6B89C !important; }
+.nav-folder:nth-child(36n+14) .nav-folder .nav-folder-title:hover { background: rgba(230, 184, 156, 0.15) !important; }
+.nav-folder:nth-child(36n+14) .nav-file-title.is-active { color: #E6B89C !important; border-left-color: #E6B89C !important; }
+.nav-folder:nth-child(36n+14) .nav-file-title:hover { background-color: rgba(230, 184, 156, 0.12) !important; border-left-color: rgba(230, 184, 156, 0.5) !important; }
+
+/* --- COULEUR 15 : Miel #DBAD6A --- */
+.nav-folder:nth-child(36n+15) > .nav-folder-title { background: linear-gradient(135deg, #DBAD6A 0%, #C99B58 100%); }
+.nav-folder:nth-child(36n+15) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #DBAD6A !important; color: #DBAD6A !important; }
+.nav-folder:nth-child(36n+15) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #DBAD6A !important; }
+.nav-folder:nth-child(36n+15) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #DBAD6A !important; color: #DBAD6A !important; box-shadow: none; }
+.nav-folder:nth-child(36n+15) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #DBAD6A !important; }
+.nav-folder:nth-child(36n+15) .nav-folder .nav-folder-title:hover { background: rgba(219, 173, 106, 0.15) !important; }
+.nav-folder:nth-child(36n+15) .nav-file-title.is-active { color: #DBAD6A !important; border-left-color: #DBAD6A !important; }
+.nav-folder:nth-child(36n+15) .nav-file-title:hover { background-color: rgba(219, 173, 106, 0.12) !important; border-left-color: rgba(219, 173, 106, 0.5) !important; }
+
+/* --- COULEUR 16 : Terracotta #C88C6A --- */
+.nav-folder:nth-child(36n+16) > .nav-folder-title { background: linear-gradient(135deg, #C88C6A 0%, #B67A58 100%); }
+.nav-folder:nth-child(36n+16) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #C88C6A !important; color: #C88C6A !important; }
+.nav-folder:nth-child(36n+16) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #C88C6A !important; }
+.nav-folder:nth-child(36n+16) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #C88C6A !important; color: #C88C6A !important; box-shadow: none; }
+.nav-folder:nth-child(36n+16) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #C88C6A !important; }
+.nav-folder:nth-child(36n+16) .nav-folder .nav-folder-title:hover { background: rgba(200, 140, 106, 0.15) !important; }
+.nav-folder:nth-child(36n+16) .nav-file-title.is-active { color: #C88C6A !important; border-left-color: #C88C6A !important; }
+.nav-folder:nth-child(36n+16) .nav-file-title:hover { background-color: rgba(200, 140, 106, 0.12) !important; border-left-color: rgba(200, 140, 106, 0.5) !important; }
+
+/* --- COULEUR 17 : Canyon #D99A7C --- */
+.nav-folder:nth-child(36n+17) > .nav-folder-title { background: linear-gradient(135deg, #D99A7C 0%, #C7886A 100%); }
+.nav-folder:nth-child(36n+17) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #D99A7C !important; color: #D99A7C !important; }
+.nav-folder:nth-child(36n+17) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #D99A7C !important; }
+.nav-folder:nth-child(36n+17) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #D99A7C !important; color: #D99A7C !important; box-shadow: none; }
+.nav-folder:nth-child(36n+17) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #D99A7C !important; }
+.nav-folder:nth-child(36n+17) .nav-folder .nav-folder-title:hover { background: rgba(217, 154, 124, 0.15) !important; }
+.nav-folder:nth-child(36n+17) .nav-file-title.is-active { color: #D99A7C !important; border-left-color: #D99A7C !important; }
+.nav-folder:nth-child(36n+17) .nav-file-title:hover { background-color: rgba(217, 154, 124, 0.12) !important; border-left-color: rgba(217, 154, 124, 0.5) !important; }
+
+/* --- COULEUR 18 : Brique #CD8162 --- */
+.nav-folder:nth-child(36n+18) > .nav-folder-title { background: linear-gradient(135deg, #CD8162 0%, #BB6F50 100%); }
+.nav-folder:nth-child(36n+18) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #CD8162 !important; color: #CD8162 !important; }
+.nav-folder:nth-child(36n+18) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #CD8162 !important; }
+.nav-folder:nth-child(36n+18) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #CD8162 !important; color: #CD8162 !important; box-shadow: none; }
+.nav-folder:nth-child(36n+18) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #CD8162 !important; }
+.nav-folder:nth-child(36n+18) .nav-folder .nav-folder-title:hover { background: rgba(205, 129, 98, 0.15) !important; }
+.nav-folder:nth-child(36n+18) .nav-file-title.is-active { color: #CD8162 !important; border-left-color: #CD8162 !important; }
+.nav-folder:nth-child(36n+18) .nav-file-title:hover { background-color: rgba(205, 129, 98, 0.12) !important; border-left-color: rgba(205, 129, 98, 0.5) !important; }
+
+/* --- COULEUR 19 : Rose Poudré #D4A5A5 --- */
+.nav-folder:nth-child(36n+19) > .nav-folder-title { background: linear-gradient(135deg, #D4A5A5 0%, #C29393 100%); }
+.nav-folder:nth-child(36n+19) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #D4A5A5 !important; color: #D4A5A5 !important; }
+.nav-folder:nth-child(36n+19) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #D4A5A5 !important; }
+.nav-folder:nth-child(36n+19) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #D4A5A5 !important; color: #D4A5A5 !important; box-shadow: none; }
+.nav-folder:nth-child(36n+19) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #D4A5A5 !important; }
+.nav-folder:nth-child(36n+19) .nav-folder .nav-folder-title:hover { background: rgba(212, 165, 165, 0.15) !important; }
+.nav-folder:nth-child(36n+19) .nav-file-title.is-active { color: #D4A5A5 !important; border-left-color: #D4A5A5 !important; }
+.nav-folder:nth-child(36n+19) .nav-file-title:hover { background-color: rgba(212, 165, 165, 0.12) !important; border-left-color: rgba(212, 165, 165, 0.5) !important; }
+
+/* --- COULEUR 20 : Vieux Rose #C99A9A --- */
+.nav-folder:nth-child(36n+20) > .nav-folder-title { background: linear-gradient(135deg, #C99A9A 0%, #B78888 100%); }
+.nav-folder:nth-child(36n+20) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #C99A9A !important; color: #C99A9A !important; }
+.nav-folder:nth-child(36n+20) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #C99A9A !important; }
+.nav-folder:nth-child(36n+20) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #C99A9A !important; color: #C99A9A !important; box-shadow: none; }
+.nav-folder:nth-child(36n+20) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #C99A9A !important; }
+.nav-folder:nth-child(36n+20) .nav-folder .nav-folder-title:hover { background: rgba(201, 154, 154, 0.15) !important; }
+.nav-folder:nth-child(36n+20) .nav-file-title.is-active { color: #C99A9A !important; border-left-color: #C99A9A !important; }
+.nav-folder:nth-child(36n+20) .nav-file-title:hover { background-color: rgba(201, 154, 154, 0.12) !important; border-left-color: rgba(201, 154, 154, 0.5) !important; }
+
+/* --- COULEUR 21 : Rose Corail #E0A8A8 --- */
+.nav-folder:nth-child(36n+21) > .nav-folder-title { background: linear-gradient(135deg, #E0A8A8 0%, #CE9696 100%); }
+.nav-folder:nth-child(36n+21) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #E0A8A8 !important; color: #E0A8A8 !important; }
+.nav-folder:nth-child(36n+21) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #E0A8A8 !important; }
+.nav-folder:nth-child(36n+21) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #E0A8A8 !important; color: #E0A8A8 !important; box-shadow: none; }
+.nav-folder:nth-child(36n+21) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #E0A8A8 !important; }
+.nav-folder:nth-child(36n+21) .nav-folder .nav-folder-title:hover { background: rgba(224, 168, 168, 0.15) !important; }
+.nav-folder:nth-child(36n+21) .nav-file-title.is-active { color: #E0A8A8 !important; border-left-color: #E0A8A8 !important; }
+.nav-folder:nth-child(36n+21) .nav-file-title:hover { background-color: rgba(224, 168, 168, 0.12) !important; border-left-color: rgba(224, 168, 168, 0.5) !important; }
+
+/* --- COULEUR 22 : Marsala #A67C7C --- */
+.nav-folder:nth-child(36n+22) > .nav-folder-title { background: linear-gradient(135deg, #A67C7C 0%, #946A6A 100%); }
+.nav-folder:nth-child(36n+22) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #A67C7C !important; color: #A67C7C !important; }
+.nav-folder:nth-child(36n+22) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #A67C7C !important; }
+.nav-folder:nth-child(36n+22) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #A67C7C !important; color: #A67C7C !important; box-shadow: none; }
+.nav-folder:nth-child(36n+22) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #A67C7C !important; }
+.nav-folder:nth-child(36n+22) .nav-folder .nav-folder-title:hover { background: rgba(166, 124, 124, 0.15) !important; }
+.nav-folder:nth-child(36n+22) .nav-file-title.is-active { color: #A67C7C !important; border-left-color: #A67C7C !important; }
+.nav-folder:nth-child(36n+22) .nav-file-title:hover { background-color: rgba(166, 124, 124, 0.12) !important; border-left-color: rgba(166, 124, 124, 0.5) !important; }
+
+/* --- COULEUR 23 : Lavande #8E94C4 --- */
+.nav-folder:nth-child(36n+23) > .nav-folder-title { background: linear-gradient(135deg, #8E94C4 0%, #7C82B2 100%); }
+.nav-folder:nth-child(36n+23) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #8E94C4 !important; color: #8E94C4 !important; }
+.nav-folder:nth-child(36n+23) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #8E94C4 !important; }
+.nav-folder:nth-child(36n+23) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #8E94C4 !important; color: #8E94C4 !important; box-shadow: none; }
+.nav-folder:nth-child(36n+23) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #8E94C4 !important; }
+.nav-folder:nth-child(36n+23) .nav-folder .nav-folder-title:hover { background: rgba(142, 148, 196, 0.15) !important; }
+.nav-folder:nth-child(36n+23) .nav-file-title.is-active { color: #8E94C4 !important; border-left-color: #8E94C4 !important; }
+.nav-folder:nth-child(36n+23) .nav-file-title:hover { background-color: rgba(142, 148, 196, 0.12) !important; border-left-color: rgba(142, 148, 196, 0.5) !important; }
+
+/* --- COULEUR 24 : Parme #A8A4CE --- */
+.nav-folder:nth-child(36n+24) > .nav-folder-title { background: linear-gradient(135deg, #A8A4CE 0%, #9692BC 100%); }
+.nav-folder:nth-child(36n+24) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #A8A4CE !important; color: #A8A4CE !important; }
+.nav-folder:nth-child(36n+24) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #A8A4CE !important; }
+.nav-folder:nth-child(36n+24) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #A8A4CE !important; color: #A8A4CE !important; box-shadow: none; }
+.nav-folder:nth-child(36n+24) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #A8A4CE !important; }
+.nav-folder:nth-child(36n+24) .nav-folder .nav-folder-title:hover { background: rgba(168, 164, 206, 0.15) !important; }
+.nav-folder:nth-child(36n+24) .nav-file-title.is-active { color: #A8A4CE !important; border-left-color: #A8A4CE !important; }
+.nav-folder:nth-child(36n+24) .nav-file-title:hover { background-color: rgba(168, 164, 206, 0.12) !important; border-left-color: rgba(168, 164, 206, 0.5) !important; }
+
+/* --- COULEUR 25 : Violet Doux #9A8FBC --- */
+.nav-folder:nth-child(36n+25) > .nav-folder-title { background: linear-gradient(135deg, #9A8FBC 0%, #887DAA 100%); }
+.nav-folder:nth-child(36n+25) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #9A8FBC !important; color: #9A8FBC !important; }
+.nav-folder:nth-child(36n+25) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #9A8FBC !important; }
+.nav-folder:nth-child(36n+25) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #9A8FBC !important; color: #9A8FBC !important; box-shadow: none; }
+.nav-folder:nth-child(36n+25) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #9A8FBC !important; }
+.nav-folder:nth-child(36n+25) .nav-folder .nav-folder-title:hover { background: rgba(154, 143, 188, 0.15) !important; }
+.nav-folder:nth-child(36n+25) .nav-file-title.is-active { color: #9A8FBC !important; border-left-color: #9A8FBC !important; }
+.nav-folder:nth-child(36n+25) .nav-file-title:hover { background-color: rgba(154, 143, 188, 0.12) !important; border-left-color: rgba(154, 143, 188, 0.5) !important; }
+
+/* --- COULEUR 26 : Lilas #B8A9C9 --- */
+.nav-folder:nth-child(36n+26) > .nav-folder-title { background: linear-gradient(135deg, #B8A9C9 0%, #A697B7 100%); }
+.nav-folder:nth-child(36n+26) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #B8A9C9 !important; color: #B8A9C9 !important; }
+.nav-folder:nth-child(36n+26) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #B8A9C9 !important; }
+.nav-folder:nth-child(36n+26) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #B8A9C9 !important; color: #B8A9C9 !important; box-shadow: none; }
+.nav-folder:nth-child(36n+26) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #B8A9C9 !important; }
+.nav-folder:nth-child(36n+26) .nav-folder .nav-folder-title:hover { background: rgba(184, 169, 201, 0.15) !important; }
+.nav-folder:nth-child(36n+26) .nav-file-title.is-active { color: #B8A9C9 !important; border-left-color: #B8A9C9 !important; }
+.nav-folder:nth-child(36n+26) .nav-file-title:hover { background-color: rgba(184, 169, 201, 0.12) !important; border-left-color: rgba(184, 169, 201, 0.5) !important; }
+
+/* --- COULEUR 27 : Aubergine #9C8AA5 --- */
+.nav-folder:nth-child(36n+27) > .nav-folder-title { background: linear-gradient(135deg, #9C8AA5 0%, #8A7893 100%); }
+.nav-folder:nth-child(36n+27) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #9C8AA5 !important; color: #9C8AA5 !important; }
+.nav-folder:nth-child(36n+27) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #9C8AA5 !important; }
+.nav-folder:nth-child(36n+27) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #9C8AA5 !important; color: #9C8AA5 !important; box-shadow: none; }
+.nav-folder:nth-child(36n+27) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #9C8AA5 !important; }
+.nav-folder:nth-child(36n+27) .nav-folder .nav-folder-title:hover { background: rgba(156, 138, 165, 0.15) !important; }
+.nav-folder:nth-child(36n+27) .nav-file-title.is-active { color: #9C8AA5 !important; border-left-color: #9C8AA5 !important; }
+.nav-folder:nth-child(36n+27) .nav-file-title:hover { background-color: rgba(156, 138, 165, 0.12) !important; border-left-color: rgba(156, 138, 165, 0.5) !important; }
+
+/* --- COULEUR 28 : Mauve #A890A5 --- */
+.nav-folder:nth-child(36n+28) > .nav-folder-title { background: linear-gradient(135deg, #A890A5 0%, #967E93 100%); }
+.nav-folder:nth-child(36n+28) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #A890A5 !important; color: #A890A5 !important; }
+.nav-folder:nth-child(36n+28) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #A890A5 !important; }
+.nav-folder:nth-child(36n+28) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #A890A5 !important; color: #A890A5 !important; box-shadow: none; }
+.nav-folder:nth-child(36n+28) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #A890A5 !important; }
+.nav-folder:nth-child(36n+28) .nav-folder .nav-folder-title:hover { background: rgba(168, 144, 165, 0.15) !important; }
+.nav-folder:nth-child(36n+28) .nav-file-title.is-active { color: #A890A5 !important; border-left-color: #A890A5 !important; }
+.nav-folder:nth-child(36n+28) .nav-file-title:hover { background-color: rgba(168, 144, 165, 0.12) !important; border-left-color: rgba(168, 144, 165, 0.5) !important; }
+
+/* --- COULEUR 29 : Caramel #C89B7B --- */
+.nav-folder:nth-child(36n+29) > .nav-folder-title { background: linear-gradient(135deg, #C89B7B 0%, #B68969 100%); }
+.nav-folder:nth-child(36n+29) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #C89B7B !important; color: #C89B7B !important; }
+.nav-folder:nth-child(36n+29) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #C89B7B !important; }
+.nav-folder:nth-child(36n+29) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #C89B7B !important; color: #C89B7B !important; box-shadow: none; }
+.nav-folder:nth-child(36n+29) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #C89B7B !important; }
+.nav-folder:nth-child(36n+29) .nav-folder .nav-folder-title:hover { background: rgba(200, 155, 123, 0.15) !important; }
+.nav-folder:nth-child(36n+29) .nav-file-title.is-active { color: #C89B7B !important; border-left-color: #C89B7B !important; }
+.nav-folder:nth-child(36n+29) .nav-file-title:hover { background-color: rgba(200, 155, 123, 0.12) !important; border-left-color: rgba(200, 155, 123, 0.5) !important; }
+
+/* --- COULEUR 30 : Taupe #C9B8A8 --- */
+.nav-folder:nth-child(36n+30) > .nav-folder-title { background: linear-gradient(135deg, #C9B8A8 0%, #B7A696 100%); }
+.nav-folder:nth-child(36n+30) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #C9B8A8 !important; color: #C9B8A8 !important; }
+.nav-folder:nth-child(36n+30) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #C9B8A8 !important; }
+.nav-folder:nth-child(36n+30) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #C9B8A8 !important; color: #C9B8A8 !important; box-shadow: none; }
+.nav-folder:nth-child(36n+30) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #C9B8A8 !important; }
+.nav-folder:nth-child(36n+30) .nav-folder .nav-folder-title:hover { background: rgba(201, 184, 168, 0.15) !important; }
+.nav-folder:nth-child(36n+30) .nav-file-title.is-active { color: #C9B8A8 !important; border-left-color: #C9B8A8 !important; }
+.nav-folder:nth-child(36n+30) .nav-file-title:hover { background-color: rgba(201, 184, 168, 0.12) !important; border-left-color: rgba(201, 184, 168, 0.5) !important; }
+
+/* --- COULEUR 31 : Grège #B5A99A --- */
+.nav-folder:nth-child(36n+31) > .nav-folder-title { background: linear-gradient(135deg, #B5A99A 0%, #A39788 100%); }
+.nav-folder:nth-child(36n+31) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #B5A99A !important; color: #B5A99A !important; }
+.nav-folder:nth-child(36n+31) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #B5A99A !important; }
+.nav-folder:nth-child(36n+31) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #B5A99A !important; color: #B5A99A !important; box-shadow: none; }
+.nav-folder:nth-child(36n+31) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #B5A99A !important; }
+.nav-folder:nth-child(36n+31) .nav-folder .nav-folder-title:hover { background: rgba(181, 169, 154, 0.15) !important; }
+.nav-folder:nth-child(36n+31) .nav-file-title.is-active { color: #B5A99A !important; border-left-color: #B5A99A !important; }
+.nav-folder:nth-child(36n+31) .nav-file-title:hover { background-color: rgba(181, 169, 154, 0.12) !important; border-left-color: rgba(181, 169, 154, 0.5) !important; }
+
+/* --- COULEUR 32 : Pierre #A89F91 --- */
+.nav-folder:nth-child(36n+32) > .nav-folder-title { background: linear-gradient(135deg, #A89F91 0%, #968D7F 100%); }
+.nav-folder:nth-child(36n+32) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #A89F91 !important; color: #A89F91 !important; }
+.nav-folder:nth-child(36n+32) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #A89F91 !important; }
+.nav-folder:nth-child(36n+32) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #A89F91 !important; color: #A89F91 !important; box-shadow: none; }
+.nav-folder:nth-child(36n+32) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #A89F91 !important; }
+.nav-folder:nth-child(36n+32) .nav-folder .nav-folder-title:hover { background: rgba(168, 159, 145, 0.15) !important; }
+.nav-folder:nth-child(36n+32) .nav-file-title.is-active { color: #A89F91 !important; border-left-color: #A89F91 !important; }
+.nav-folder:nth-child(36n+32) .nav-file-title:hover { background-color: rgba(168, 159, 145, 0.12) !important; border-left-color: rgba(168, 159, 145, 0.5) !important; }
+
+/* --- COULEUR 33 : Gris Bleuté #8A9A9A --- */
+.nav-folder:nth-child(36n+33) > .nav-folder-title { background: linear-gradient(135deg, #8A9A9A 0%, #788888 100%); }
+.nav-folder:nth-child(36n+33) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #8A9A9A !important; color: #8A9A9A !important; }
+.nav-folder:nth-child(36n+33) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #8A9A9A !important; }
+.nav-folder:nth-child(36n+33) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #8A9A9A !important; color: #8A9A9A !important; box-shadow: none; }
+.nav-folder:nth-child(36n+33) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #8A9A9A !important; }
+.nav-folder:nth-child(36n+33) .nav-folder .nav-folder-title:hover { background: rgba(138, 154, 154, 0.15) !important; }
+.nav-folder:nth-child(36n+33) .nav-file-title.is-active { color: #8A9A9A !important; border-left-color: #8A9A9A !important; }
+.nav-folder:nth-child(36n+33) .nav-file-title:hover { background-color: rgba(138, 154, 154, 0.12) !important; border-left-color: rgba(138, 154, 154, 0.5) !important; }
+
+/* --- COULEUR 34 : Gris Vert #919A8A --- */
+.nav-folder:nth-child(36n+34) > .nav-folder-title { background: linear-gradient(135deg, #919A8A 0%, #7F8878 100%); }
+.nav-folder:nth-child(36n+34) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #919A8A !important; color: #919A8A !important; }
+.nav-folder:nth-child(36n+34) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #919A8A !important; }
+.nav-folder:nth-child(36n+34) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #919A8A !important; color: #919A8A !important; box-shadow: none; }
+.nav-folder:nth-child(36n+34) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #919A8A !important; }
+.nav-folder:nth-child(36n+34) .nav-folder .nav-folder-title:hover { background: rgba(145, 154, 138, 0.15) !important; }
+.nav-folder:nth-child(36n+34) .nav-file-title.is-active { color: #919A8A !important; border-left-color: #919A8A !important; }
+.nav-folder:nth-child(36n+34) .nav-file-title:hover { background-color: rgba(145, 154, 138, 0.12) !important; border-left-color: rgba(145, 154, 138, 0.5) !important; }
+
+/* --- COULEUR 35 : Gris Chaud #9A9490 --- */
+.nav-folder:nth-child(36n+35) > .nav-folder-title { background: linear-gradient(135deg, #9A9490 0%, #88827E 100%); }
+.nav-folder:nth-child(36n+35) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #9A9490 !important; color: #9A9490 !important; }
+.nav-folder:nth-child(36n+35) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #9A9490 !important; }
+.nav-folder:nth-child(36n+35) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #9A9490 !important; color: #9A9490 !important; box-shadow: none; }
+.nav-folder:nth-child(36n+35) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #9A9490 !important; }
+.nav-folder:nth-child(36n+35) .nav-folder .nav-folder-title:hover { background: rgba(154, 148, 144, 0.15) !important; }
+.nav-folder:nth-child(36n+35) .nav-file-title.is-active { color: #9A9490 !important; border-left-color: #9A9490 !important; }
+.nav-folder:nth-child(36n+35) .nav-file-title:hover { background-color: rgba(154, 148, 144, 0.12) !important; border-left-color: rgba(154, 148, 144, 0.5) !important; }
+
+/* --- COULEUR 36 : Ardoise #8D9199 --- */
+.nav-folder:nth-child(36n) > .nav-folder-title { background: linear-gradient(135deg, #8D9199 0%, #7B7F87 100%); }
+.nav-folder:nth-child(36n) > .nav-folder-title:hover { background: var(--background-primary) !important; border-color: #8D9199 !important; color: #8D9199 !important; }
+.nav-folder:nth-child(36n) > .nav-folder-title:hover .nav-folder-collapse-indicator { color: #8D9199 !important; }
+.nav-folder:nth-child(36n) .nav-folder .nav-folder-title { background: var(--background-primary) !important; border: 2px solid #8D9199 !important; color: #8D9199 !important; box-shadow: none; }
+.nav-folder:nth-child(36n) .nav-folder .nav-folder-title .nav-folder-collapse-indicator { color: #8D9199 !important; }
+.nav-folder:nth-child(36n) .nav-folder .nav-folder-title:hover { background: rgba(141, 145, 153, 0.15) !important; }
+.nav-folder:nth-child(36n) .nav-file-title.is-active { color: #8D9199 !important; border-left-color: #8D9199 !important; }
+.nav-folder:nth-child(36n) .nav-file-title:hover { background-color: rgba(141, 145, 153, 0.12) !important; border-left-color: rgba(141, 145, 153, 0.5) !important; }
 
 /* ==========================================================================
-   6. ONGLETS (Tabs) - Design Moderne
+   7. ONGLETS (Tabs)
    ========================================================================== */
-
 .workspace-tab-header-container {
     background-color: var(--background-secondary);
     padding: 6px 8px 0;
@@ -361,7 +594,6 @@ body {
     color: var(--text-muted);
     border: 1px solid transparent;
     border-bottom: none;
-    transition: all var(--anim-duration-fast) var(--anim-motion);
 }
 
 .workspace-tab-header:hover {
@@ -377,110 +609,45 @@ body {
     box-shadow: 0 -2px 8px var(--shadow-color);
 }
 
-/* Indicateur de tab actif */
-.workspace-tab-header.is-active::after {
-    content: "";
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background-color: var(--background-primary);
-}
-
 /* ==========================================================================
-   7. ÉDITEUR - TYPOGRAPHIE & TITRES
+   8. TITRES
    ========================================================================== */
-
-/* Titres avec styles distincts */
-.cm-header, h1, h2, h3, h4, h5, h6,
-.markdown-preview-view h1,
-.markdown-preview-view h2,
-.markdown-preview-view h3,
-.markdown-preview-view h4,
-.markdown-preview-view h5,
-.markdown-preview-view h6 {
+.cm-header, h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-text-theme);
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.3;
 }
 
-h1, .cm-header-1, .markdown-preview-view h1 {
-    font-size: 2em;
-    color: var(--h1-color);
-    margin: 1.5em 0 0.5em;
-    padding-bottom: 0.3em;
-    border-bottom: 2px solid var(--divider-color);
-}
-
-h2, .cm-header-2, .markdown-preview-view h2 {
-    font-size: 1.6em;
-    color: var(--h2-color);
-    margin: 1.3em 0 0.4em;
-}
-
-h3, .cm-header-3, .markdown-preview-view h3 {
-    font-size: 1.3em;
-    color: var(--h3-color);
-    margin: 1.2em 0 0.3em;
-}
-
-h4, .cm-header-4, .markdown-preview-view h4 {
-    font-size: 1.1em;
-    color: var(--h4-color);
-    margin: 1em 0 0.3em;
-}
-
-h5, .cm-header-5, .markdown-preview-view h5 {
-    font-size: 1em;
-    color: var(--h5-color);
-    font-weight: 600;
-}
-
-h6, .cm-header-6, .markdown-preview-view h6 {
-    font-size: 0.95em;
-    color: var(--h6-color);
-    font-weight: 600;
-    font-style: italic;
-}
+h1, .cm-header-1 { font-size: 2em; color: var(--h1-color); border-bottom: 2px solid var(--divider-color); padding-bottom: 0.3em; }
+h2, .cm-header-2 { font-size: 1.6em; color: var(--h2-color); }
+h3, .cm-header-3 { font-size: 1.3em; color: var(--h3-color); }
+h4, .cm-header-4 { font-size: 1.1em; color: var(--h4-color); }
+h5, .cm-header-5 { font-size: 1em; color: var(--h5-color); }
+h6, .cm-header-6 { font-size: 0.95em; color: var(--h6-color); font-style: italic; }
 
 /* ==========================================================================
-   8. CHECKBOXES STYLÉES (Productivité)
+   9. CHECKBOXES
    ========================================================================== */
-
-/* Base des checkboxes */
-input[type="checkbox"],
-.task-list-item-checkbox {
+input[type="checkbox"], .task-list-item-checkbox {
     appearance: none;
-    -webkit-appearance: none;
     width: 18px;
     height: 18px;
     border: 2px solid var(--checkbox-border-color);
     border-radius: var(--radius-s);
     background-color: var(--background-primary);
     cursor: pointer;
-    transition: all var(--anim-duration-fast) var(--anim-motion);
     position: relative;
     vertical-align: middle;
     margin-right: 8px;
 }
 
-input[type="checkbox"]:hover,
-.task-list-item-checkbox:hover {
-    border-color: var(--interactive-accent);
-    background-color: var(--background-modifier-hover);
-}
-
-/* Checkbox cochée */
-input[type="checkbox"]:checked,
-.task-list-item-checkbox:checked {
+input[type="checkbox"]:checked, .task-list-item-checkbox:checked {
     background-color: var(--interactive-accent);
     border-color: var(--interactive-accent);
 }
 
-input[type="checkbox"]:checked::after,
-.task-list-item-checkbox:checked::after {
+input[type="checkbox"]:checked::after, .task-list-item-checkbox:checked::after {
     content: "✓";
     position: absolute;
     top: 50%;
@@ -491,150 +658,22 @@ input[type="checkbox"]:checked::after,
     font-weight: bold;
 }
 
-/* Tâche complétée - barré */
-.task-list-item.is-checked .task-list-item-checkbox ~ *,
-li.is-checked {
-    text-decoration: line-through;
-    color: var(--text-faint);
-}
-
 /* ==========================================================================
-   9. CALLOUTS PERSONNALISÉS (Notes, Warning, etc.)
+   10. BLOCKQUOTES
    ========================================================================== */
-
-.callout {
-    border-radius: var(--radius-l);
-    border: 1px solid var(--background-modifier-border);
-    padding: 0;
-    margin: 16px 0;
-    overflow: hidden;
-    box-shadow: 0 2px 6px var(--shadow-color);
-}
-
-.callout-title {
-    padding: 12px 16px;
-    font-weight: 600;
-    font-size: 0.95em;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.callout-content {
-    padding: 0 16px 16px;
-}
-
-/* Callout INFO */
-.callout[data-callout="info"],
-.callout[data-callout="note"] {
-    background-color: rgba(92, 158, 173, 0.08);
-    border-color: rgba(92, 158, 173, 0.3);
-}
-.callout[data-callout="info"] .callout-title,
-.callout[data-callout="note"] .callout-title {
-    background-color: rgba(92, 158, 173, 0.15);
-    color: #5C9EAD;
-}
-
-/* Callout WARNING */
-.callout[data-callout="warning"],
-.callout[data-callout="caution"] {
-    background-color: rgba(232, 168, 124, 0.08);
-    border-color: rgba(232, 168, 124, 0.3);
-}
-.callout[data-callout="warning"] .callout-title,
-.callout[data-callout="caution"] .callout-title {
-    background-color: rgba(232, 168, 124, 0.15);
-    color: #D4956C;
-}
-
-/* Callout SUCCESS / TIP */
-.callout[data-callout="success"],
-.callout[data-callout="tip"],
-.callout[data-callout="done"] {
-    background-color: rgba(124, 176, 131, 0.08);
-    border-color: rgba(124, 176, 131, 0.3);
-}
-.callout[data-callout="success"] .callout-title,
-.callout[data-callout="tip"] .callout-title,
-.callout[data-callout="done"] .callout-title {
-    background-color: rgba(124, 176, 131, 0.15);
-    color: #5A9A62;
-}
-
-/* Callout ERROR / DANGER */
-.callout[data-callout="error"],
-.callout[data-callout="danger"],
-.callout[data-callout="bug"] {
-    background-color: rgba(207, 102, 102, 0.08);
-    border-color: rgba(207, 102, 102, 0.3);
-}
-.callout[data-callout="error"] .callout-title,
-.callout[data-callout="danger"] .callout-title,
-.callout[data-callout="bug"] .callout-title {
-    background-color: rgba(207, 102, 102, 0.15);
-    color: #C75050;
-}
-
-/* Callout QUESTION */
-.callout[data-callout="question"],
-.callout[data-callout="help"],
-.callout[data-callout="faq"] {
-    background-color: rgba(142, 148, 196, 0.08);
-    border-color: rgba(142, 148, 196, 0.3);
-}
-.callout[data-callout="question"] .callout-title,
-.callout[data-callout="help"] .callout-title,
-.callout[data-callout="faq"] .callout-title {
-    background-color: rgba(142, 148, 196, 0.15);
-    color: #7A80B8;
-}
-
-/* Callout QUOTE */
-.callout[data-callout="quote"],
-.callout[data-callout="cite"] {
-    background-color: var(--background-primary-alt);
-    border-left: 4px solid var(--text-faint);
-}
-.callout[data-callout="quote"] .callout-title,
-.callout[data-callout="cite"] .callout-title {
-    font-style: italic;
-    color: var(--text-muted);
-}
-
-/* ==========================================================================
-   10. BLOCKQUOTES ÉLÉGANTS
-   ========================================================================== */
-
 blockquote {
     border-left: 4px solid var(--interactive-accent);
-    background: linear-gradient(90deg, 
-        rgba(107, 144, 128, 0.06) 0%, 
-        transparent 100%);
+    background: linear-gradient(90deg, rgba(107, 144, 128, 0.06) 0%, transparent 100%);
     padding: 16px 20px;
     margin: 16px 0;
     border-radius: 0 var(--radius-m) var(--radius-m) 0;
     font-style: italic;
     color: var(--text-muted);
-    position: relative;
-}
-
-blockquote::before {
-    content: """;
-    position: absolute;
-    top: -5px;
-    left: 12px;
-    font-size: 3em;
-    color: var(--interactive-accent);
-    opacity: 0.2;
-    font-family: Georgia, serif;
 }
 
 /* ==========================================================================
-   11. CODE BLOCKS & INLINE CODE
+   11. CODE
    ========================================================================== */
-
-/* Code inline */
 code, .cm-inline-code {
     font-family: var(--font-monospace-theme);
     background-color: var(--code-background);
@@ -642,122 +681,19 @@ code, .cm-inline-code {
     padding: 2px 6px;
     border-radius: var(--radius-s);
     font-size: 0.88em;
-    border: 1px solid var(--background-modifier-border);
 }
 
-/* Blocs de code */
-pre, .markdown-preview-view pre {
+pre {
     background-color: var(--code-background);
     border: 1px solid var(--background-modifier-border);
     border-radius: var(--radius-m);
     padding: 16px;
     overflow-x: auto;
-    margin: 16px 0;
-    box-shadow: inset 0 1px 3px var(--shadow-color);
-}
-
-pre code {
-    background: none;
-    border: none;
-    padding: 0;
-    font-size: 0.9em;
-    line-height: 1.5;
-}
-
-/* Langage du bloc de code */
-.markdown-preview-view pre[class*="language-"]::before {
-    content: attr(class);
-    position: absolute;
-    top: 8px;
-    right: 12px;
-    font-size: 0.7em;
-    color: var(--text-faint);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
 /* ==========================================================================
-   12. TABLEAUX MODERNES
+   12. TAGS
    ========================================================================== */
-
-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    margin: 20px 0;
-    font-size: 0.95em;
-    border-radius: var(--radius-m);
-    overflow: hidden;
-    box-shadow: 0 1px 4px var(--shadow-color);
-}
-
-thead {
-    background: linear-gradient(135deg, 
-        var(--interactive-accent) 0%, 
-        color-mix(in srgb, var(--interactive-accent) 80%, #000) 100%);
-}
-
-th {
-    color: var(--text-on-accent);
-    font-weight: 600;
-    text-align: left;
-    padding: 12px 16px;
-    font-size: 0.85em;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-td {
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--background-modifier-border);
-    background-color: var(--background-primary);
-}
-
-/* Lignes alternées */
-tbody tr:nth-child(even) td {
-    background-color: var(--background-primary-alt);
-}
-
-/* Hover sur les lignes */
-tbody tr:hover td {
-    background-color: var(--background-modifier-hover);
-}
-
-/* ==========================================================================
-   13. LIENS & RÉFÉRENCES
-   ========================================================================== */
-
-a, .cm-link, .cm-hmd-internal-link,
-.markdown-preview-view a {
-    color: var(--text-accent);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: all var(--anim-duration-fast) var(--anim-motion);
-}
-
-a:hover, .cm-link:hover, .cm-hmd-internal-link:hover,
-.markdown-preview-view a:hover {
-    color: var(--text-accent-hover);
-    border-bottom-color: var(--text-accent-hover);
-}
-
-/* Liens externes - icône */
-.external-link::after {
-    content: " ↗";
-    font-size: 0.8em;
-    opacity: 0.7;
-}
-
-/* Liens internes non résolus */
-.is-unresolved {
-    opacity: 0.6;
-    border-bottom-style: dashed;
-}
-
-/* ==========================================================================
-   14. TAGS MODERNES (Style Pilule)
-   ========================================================================== */
-
 .cm-hashtag, a.tag, .tag {
     background-color: var(--background-secondary-alt);
     color: var(--text-accent);
@@ -767,330 +703,53 @@ a:hover, .cm-link:hover, .cm-hmd-internal-link:hover,
     font-weight: 500;
     text-decoration: none !important;
     border: 1px solid var(--background-modifier-border);
-    transition: all var(--anim-duration-fast) var(--anim-motion);
-    display: inline-block;
-    line-height: 1.4;
 }
 
 .cm-hashtag:hover, a.tag:hover, .tag:hover {
     background-color: var(--interactive-accent);
     color: var(--text-on-accent);
     border-color: var(--interactive-accent);
-    transform: translateY(-1px);
-    box-shadow: 0 2px 6px var(--shadow-color-hover);
 }
 
 /* ==========================================================================
-   15. SURBRILLANCE (Highlight) ==texte==
+   13. LIENS
    ========================================================================== */
-
-mark, .cm-highlight {
-    background-color: var(--text-highlight-bg);
-    color: inherit;
-    padding: 1px 4px;
-    border-radius: 3px;
-}
-
-/* ==========================================================================
-   16. BARRE DE STATUT
-   ========================================================================== */
-
-.status-bar {
-    background-color: var(--background-secondary);
-    border-top: 1px solid var(--background-modifier-border);
-    font-size: 0.75em;
-    color: var(--text-faint);
-    padding: 4px 12px;
-}
-
-.status-bar-item {
-    padding: 0 8px;
-}
-
-/* ==========================================================================
-   17. FENÊTRES MODALES & POPUPS
-   ========================================================================== */
-
-.modal {
-    border-radius: var(--radius-xl);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-    border: 1px solid var(--background-modifier-border);
-}
-
-.modal-title {
-    font-size: 1.2em;
-    font-weight: 600;
-}
-
-.modal-close-button {
-    transition: color var(--anim-duration-fast);
-}
-
-.modal-close-button:hover {
+a, .cm-link, .cm-hmd-internal-link {
     color: var(--text-accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
 }
 
-/* Suggestions (liens, commandes) */
-.suggestion-container {
-    border-radius: var(--radius-m);
-    box-shadow: 0 8px 30px var(--shadow-color-hover);
-    border: 1px solid var(--background-modifier-border);
-}
-
-.suggestion-item {
-    padding: 8px 12px;
-    border-radius: var(--radius-s);
-}
-
-.suggestion-item.is-selected {
-    background-color: var(--background-modifier-active);
+a:hover, .cm-link:hover, .cm-hmd-internal-link:hover {
+    color: var(--text-accent-hover);
+    border-bottom-color: var(--text-accent-hover);
 }
 
 /* ==========================================================================
-   18. BOUTONS
+   14. SCROLLBARS
    ========================================================================== */
-
-button {
-    font-family: var(--font-text-theme);
-    border-radius: var(--radius-m);
-    padding: 8px 16px;
-    transition: all var(--anim-duration-fast) var(--anim-motion);
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+    background-color: var(--background-modifier-border);
+    border-radius: 4px;
 }
+::-webkit-scrollbar-thumb:hover { background-color: var(--text-faint); }
 
+/* ==========================================================================
+   15. BOUTONS
+   ========================================================================== */
 button.mod-cta {
-    background: linear-gradient(135deg, 
-        var(--interactive-accent) 0%, 
-        color-mix(in srgb, var(--interactive-accent) 85%, #000) 100%);
+    background: linear-gradient(135deg, var(--interactive-accent) 0%, var(--interactive-accent-hover) 100%);
     color: var(--text-on-accent);
     font-weight: 500;
     border: none;
+    border-radius: var(--radius-m);
+    padding: 8px 16px;
     box-shadow: 0 2px 6px var(--shadow-color);
 }
 
 button.mod-cta:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 12px var(--shadow-color-hover);
-}
-
-button.mod-cta:active {
-    transform: translateY(0);
-}
-
-/* ==========================================================================
-   19. GRAPHE (Graph View)
-   ========================================================================== */
-
-.graph-view.color-fill-tag {
-    color: var(--interactive-accent);
-}
-
-.graph-view.color-fill-attachment {
-    color: var(--text-faint);
-}
-
-.graph-view.color-arrow {
-    color: var(--text-muted);
-}
-
-.graph-view.color-line {
-    color: var(--graph-line);
-}
-
-.graph-view.color-text {
-    color: var(--text-normal);
-}
-
-/* ==========================================================================
-   20. CANVAS
-   ========================================================================== */
-
-.canvas-node {
-    border-radius: var(--radius-m);
-    box-shadow: 0 2px 8px var(--shadow-color);
-}
-
-.canvas-node:hover {
-    box-shadow: 0 4px 16px var(--shadow-color-hover);
-}
-
-.canvas-node.is-selected {
-    box-shadow: 0 0 0 3px var(--interactive-accent),
-                0 4px 16px var(--shadow-color-hover);
-}
-
-/* ==========================================================================
-   21. MODE FOCUS / ZEN (Productivité)
-   ========================================================================== */
-
-/* Activer via Style Settings ou CSS class */
-body.focus-mode .workspace-ribbon,
-body.focus-mode .workspace-split.mod-left-split,
-body.focus-mode .workspace-split.mod-right-split,
-body.focus-mode .status-bar {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-}
-
-body.focus-mode:hover .workspace-ribbon,
-body.focus-mode:hover .workspace-split.mod-left-split,
-body.focus-mode:hover .workspace-split.mod-right-split,
-body.focus-mode:hover .status-bar {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* Ligne active surlignée */
-.cm-active.cm-line {
-    background-color: var(--background-modifier-hover);
-    border-radius: var(--radius-s);
-}
-
-/* ==========================================================================
-   22. LISTES À PUCES
-   ========================================================================== */
-
-ul, ol {
-    padding-left: 24px;
-}
-
-ul > li::marker {
-    color: var(--interactive-accent);
-}
-
-ol > li::marker {
-    color: var(--text-accent);
-    font-weight: 500;
-}
-
-/* Listes imbriquées */
-ul ul, ol ul {
-    list-style-type: circle;
-}
-
-ul ul ul, ol ul ul {
-    list-style-type: square;
-}
-
-/* ==========================================================================
-   23. SÉPARATEURS (Horizontal Rules)
-   ========================================================================== */
-
-hr {
-    border: none;
-    height: 2px;
-    background: linear-gradient(90deg, 
-        transparent, 
-        var(--divider-color) 20%, 
-        var(--divider-color) 80%, 
-        transparent);
-    margin: 32px 0;
-}
-
-/* ==========================================================================
-   24. PROPERTIES / FRONTMATTER
-   ========================================================================== */
-
-.metadata-container {
-    background-color: var(--background-primary-alt);
-    border-radius: var(--radius-m);
-    border: 1px solid var(--background-modifier-border);
-    padding: 12px 16px;
-    margin-bottom: 20px;
-}
-
-.metadata-property {
-    padding: 4px 0;
-    border-bottom: 1px dashed var(--background-modifier-border);
-}
-
-.metadata-property:last-child {
-    border-bottom: none;
-}
-
-.metadata-property-key {
-    color: var(--text-accent);
-    font-weight: 500;
-    font-size: 0.9em;
-}
-
-/* ==========================================================================
-   25. EMBEDS (Notes intégrées)
-   ========================================================================== */
-
-.markdown-embed {
-    border: 1px solid var(--background-modifier-border);
-    border-radius: var(--radius-m);
-    background-color: var(--background-primary-alt);
-    padding: 16px;
-    margin: 12px 0;
-    box-shadow: 0 1px 4px var(--shadow-color);
-}
-
-.markdown-embed-title {
-    font-weight: 600;
-    color: var(--text-accent);
-    margin-bottom: 8px;
-    font-size: 0.9em;
-}
-
-/* ==========================================================================
-   26. SCROLLBARS MINIMALISTES
-   ========================================================================== */
-
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: var(--background-modifier-border);
-    border-radius: 4px;
-    border: 2px solid transparent;
-    background-clip: padding-box;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: var(--text-faint);
-}
-
-/* ==========================================================================
-   27. ACCESSIBILITÉ - FOCUS VISIBLE
-   ========================================================================== */
-
-*:focus-visible {
-    outline: 2px solid var(--interactive-accent);
-    outline-offset: 2px;
-}
-
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-    box-shadow: 0 0 0 3px rgba(107, 144, 128, 0.3);
-}
-
-/* ==========================================================================
-   28. ANIMATIONS SUBTILES
-   ========================================================================== */
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-4px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.modal {
-    animation: fadeIn 0.2s ease-out;
-}
-
-/* Désactiver les animations si préféré */
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-    }
 }
