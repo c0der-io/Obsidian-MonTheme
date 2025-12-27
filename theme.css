@@ -1,14 +1,27 @@
-/* Définitions pour le mode CLAIR */
+/* --- CONFIGURATION DU MODE CLAIR ☀️ --- */
 .theme-light {
-    --nav-bar-color: #ff9900; /* Orange vif */
+    /* Tes variables perso */
+    --nav-bar-color: #ff9900; 
+    
+    /* Surcharge des variables Obsidian */
+    --background-primary: #f0f0f0;
+    --text-normal: #333333;
+    --color-accent: #d90429;
 }
 
-/* Définitions pour le mode SOMBRE */
+/* --- CONFIGURATION DU MODE SOMBRE 🌙 --- */
 .theme-dark {
-    --nav-bar-color: #4b0082; /* Indigo sombre */
+    /* Tes variables perso */
+    --nav-bar-color: #4b0082;
+    
+    /* Surcharge des variables Obsidian (valeurs par défaut ou tes choix) */
+    --background-primary: #1e1e1e; /* Exemple: gris très sombre */
+    --color-accent: #ff9900;       /* On réutilise l'orange pour l'accent sombre */
 }
 
-/* Application de la couleur (ce code ne change pas !) */
+/* --- APPLICATION DU STYLE --- */
 .nav-buttons-container {
     background-color: var(--nav-bar-color);
+    /* On arrondit un peu les coins pour faire moderne */
+    border-radius: 0 0 10px 10px; 
 }
