@@ -1,0 +1,14 @@
+/* Définitions pour le mode CLAIR */
+.theme-light {
+    --nav-bar-color: #ff9900; /* Orange vif */
+}
+
+/* Définitions pour le mode SOMBRE */
+.theme-dark {
+    --nav-bar-color: #4b0082; /* Indigo sombre */
+}
+
+/* Application de la couleur (ce code ne change pas !) */
+.nav-buttons-container {
+    background-color: var(--nav-bar-color);
+}
